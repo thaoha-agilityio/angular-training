@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CalculatorService } from '../../services/calculator.service';
 
 @Component({
+  standalone: true,
   selector: 'app-receipt',
   template: `<h1>The total is {{ totalCost }}</h1>`,
 })
