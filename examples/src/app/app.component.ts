@@ -15,4 +15,11 @@ export class AppComponent {
   title = 'examples';
   fontSizePx = 16;
   systemVolume: string | undefined;
+  sliderDisabled: any;
+
+  items = ['item1', 'item2'];
+
+  addItem(newItem: string) {
+    this.items.push(newItem);
+  }
 }

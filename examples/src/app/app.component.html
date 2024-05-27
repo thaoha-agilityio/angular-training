@@ -1,4 +1,13 @@
 <app-sizer [(size)]="fontSizePx"></app-sizer>
 <div [style.font-size.px]="fontSizePx">Resizable Text</div>
 <TodoList></TodoList>
-<custom-slider [label]="systemVolume" [sliderValue]="50" />
+
+<custom-slider [sliderDisabled]="sliderDisabled" />
+<div class="container">
+  <custom-slider (newItemEvent)="addItem($event)"></custom-slider>
+  <ul>
+    @for (item of items;track item) {
+    <li>{{ item }}</li>
+    }
+  </ul>
+</div>
