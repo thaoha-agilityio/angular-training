@@ -3,13 +3,20 @@ import { RouterOutlet } from '@angular/router';
 import { SizerComponent } from './sizer/sizer.component';
 import { TodoList } from './components/todo-list/todo-list.component';
 import { CustomSlider } from './slider/slider.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [RouterOutlet, SizerComponent, TodoList, CustomSlider],
+  imports: [
+    RouterOutlet,
+    SizerComponent,
+    TodoList,
+    CustomSlider,
+    NavBarComponent,
+  ],
 })
 export class AppComponent {
   title = 'examples';
