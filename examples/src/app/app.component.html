@@ -15,3 +15,6 @@
 
 <p>{{ announcement }}</p>
 <input (keydown.enter)="updateInput()" />
+
+<p>The hero's birthday is {{ birthday | date }}</p>
+<p>The hero's birthday is in {{ birthday | date : "yyyy" | uppercase }}</p>

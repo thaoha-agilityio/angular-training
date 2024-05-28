@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DatePipe, UpperCasePipe } from '@angular/common';
+
 import { SizerComponent } from './sizer/sizer.component';
 import { TodoList } from './components/todo-list/todo-list.component';
 import { CustomSlider } from './slider/slider.component';
@@ -16,6 +18,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     TodoList,
     CustomSlider,
     NavBarComponent,
+    DatePipe,
+    UpperCasePipe,
   ],
 })
 export class AppComponent {
@@ -23,6 +27,8 @@ export class AppComponent {
   updateInput() {
     this.announcement = this.announcement.toUpperCase();
   }
+
+  birthday = new Date();
 
   title = 'examples';
   fontSizePx = 16;
