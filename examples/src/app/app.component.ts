@@ -19,6 +19,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   ],
 })
 export class AppComponent {
+  announcement = 'Hello again Angular!';
+  updateInput() {
+    this.announcement = this.announcement.toUpperCase();
+  }
+
   title = 'examples';
   fontSizePx = 16;
   systemVolume: string | undefined;
