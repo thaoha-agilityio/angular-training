@@ -18,3 +18,15 @@
 
 <p>The hero's birthday is {{ birthday | date }}</p>
 <p>The hero's birthday is in {{ birthday | date : "yyyy" | uppercase }}</p>
+
+<!-- Accessing in a nested template -->
+<input #ref1 type="text" [(ngModel)]="firstExample" />
+<span>Value: {{ ref1?.value }}</span>
+
+<!-- Template input variables -->
+
+<ul>
+  <ng-template ngFor let-hero let-i="index" [ngForOf]="heroes">
+    <li>Hero number {{ i }}: {{ hero.name }}</li></ng-template
+  >
+</ul>

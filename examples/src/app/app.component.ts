@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DatePipe, UpperCasePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { SizerComponent } from './sizer/sizer.component';
 import { TodoList } from './components/todo-list/todo-list.component';
@@ -20,10 +21,25 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     NavBarComponent,
     DatePipe,
     UpperCasePipe,
+    FormsModule,
   ],
 })
 export class AppComponent {
+  firstExample = '';
+
   announcement = 'Hello again Angular!';
+
+  heroes = [
+    {
+      id: 1,
+      name: 'hero1',
+    },
+    {
+      id: 2,
+      name: 'hero2',
+    },
+  ];
+
   updateInput() {
     this.announcement = this.announcement.toUpperCase();
   }
