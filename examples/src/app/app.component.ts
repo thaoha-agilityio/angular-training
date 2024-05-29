@@ -8,6 +8,7 @@ import { TodoList } from './components/todo-list/todo-list.component';
 import { CustomSlider } from './slider/slider.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { AppProfileEditor } from './form/form.component';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     NgFor,
     NgIf,
     HighlightDirective,
+    AppProfileEditor,
   ],
 })
 export class AppComponent {
