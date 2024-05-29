@@ -7,6 +7,7 @@ import { SizerComponent } from './sizer/sizer.component';
 import { TodoList } from './components/todo-list/todo-list.component';
 import { CustomSlider } from './slider/slider.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     FormsModule,
     NgFor,
     NgIf,
+    HighlightDirective,
   ],
 })
 export class AppComponent {
@@ -42,6 +44,7 @@ export class AppComponent {
     },
   ];
   hero = '1';
+  color: string = '';
 
   updateInput() {
     this.announcement = this.announcement.toUpperCase();

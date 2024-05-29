@@ -28,3 +28,11 @@
 <ng-container *ngFor="let item of heroes; let i = index">
   <p *ngIf="item.id">{{ i + 1 }} {{ item.name }}</p>
 </ng-container>
+
+<h2>Pick a highlight color</h2>
+<div>
+  <input type="radio" name="colors" (click)="color = 'lightgreen'" />Green
+  <input type="radio" name="colors" (click)="color = 'yellow'" />Yellow
+  <input type="radio" name="colors" (click)="color = 'cyan'" />Cyan
+</div>
+<p [appHighlight]="color">Highlight me!</p>
