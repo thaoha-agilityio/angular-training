@@ -1,27 +1,63 @@
 # Practice
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.
+## Overview
 
-## Development server
+- This document provides the plan, requirements and estimation for Angular Practice.
+- Build User Manager web
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Target
 
-## Code scaffolding
+- Utilize Angular CLI to generate projects, components, services, and modules.
+- Understand and apply concepts such as Two-way binding, Directives, Components, Services, Dependency Injection, Routing, and Forms in Angular.
+- Understanding communicating with backend services using HTTP
+- Perform HTTP requests like GET, POST, PUT, and DELETE to send and receive data from API.
+- Handle error cases and display appropriate messages to users in case of connection errors or data processing
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technical Stack
 
-## Build
+- Angular (v18)
+- TypeScript
+- json-server
+- Tailwind CSS
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Develop tools
 
-## Running unit tests
+- Prettier
+- Husky
+- Eslint
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Requirements
 
-## Running end-to-end tests
+- [link](https://docs.google.com/document/d/1qBeLnJHOZbj89ECMKn8YByYUaYOzLvbGXtF_PKzSBOI/edit)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Design
 
-## Further help
+- Refer [design](https://webix.com/demos/user-manager/)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Prerequisites
+
+- node: v20.7.0
+- pnpm: v8.14.1
+
+## Getting started
+
+- Step 1: Cloning the repo
+  `git@gitlab.asoft-python.com:thao.ha/angular-training.git`
+  or
+  `https://gitlab.asoft-python.com/thao.ha/angular-training.git`
+
+- Step 2: Checkout branch `git checkout feat/practice`
+
+- Step 3: Go to the folder `cd practice`
+
+- Step 4: Install packages `pnpm install`
+
+- Step 5: Run json-server `pnpm run server`
+
+- Step 6: Run project `pnpm start`
+
+- Step 7: Follow to command lines below
+
+| Command      | Action                                             |
+| :----------- | :------------------------------------------------- |
+| `pnpm start` | Start local dev server at `http://localhost:4200/` |
