@@ -1,0 +1,8 @@
+<!-- todo-list-item.component.html -->
+<ul>
+  @for (todo of todoList; track todo.name) {
+  <li>{{ todo.name }} - {{ todo.task }}</li>
+  }
+</ul>
+
+<app-receipt></app-receipt>

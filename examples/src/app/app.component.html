@@ -1,0 +1,40 @@
+<app-nav-bar></app-nav-bar>
+<app-sizer [(size)]="fontSizePx"></app-sizer>
+<div [style.font-size.px]="fontSizePx">Resizable Text</div>
+<TodoList></TodoList>
+
+<custom-slider [sliderDisabled]="sliderDisabled" />
+<div class="container">
+  <custom-slider (newItemEvent)="addItem($event)"></custom-slider>
+  <ul>
+    @for (item of items;track item) {
+    <li>{{ item }}</li>
+    }
+  </ul>
+</div>
+
+<p>{{ announcement }}</p>
+<input (keydown.enter)="updateInput()" />
+
+<p>The hero's birthday is {{ birthday | date }}</p>
+<p>The hero's birthday is in {{ birthday | date : "yyyy" | uppercase }}</p>
+
+<!-- Accessing in a nested template -->
+<input #ref1 type="text" [(ngModel)]="firstExample" />
+<span>Value: {{ ref1?.value }}</span>
+
+<!-- Template input variables -->
+
+<ng-container *ngFor="let item of heroes; let i = index">
+  <p *ngIf="item.id">{{ i + 1 }} {{ item.name }}</p>
+</ng-container>
+
+<h2>Pick a highlight color</h2>
+<div>
+  <input type="radio" name="colors" (click)="color = 'lightgreen'" />Green
+  <input type="radio" name="colors" (click)="color = 'yellow'" />Yellow
+  <input type="radio" name="colors" (click)="color = 'cyan'" />Cyan
+</div>
+<p [appHighlight]="color">Highlight me!</p>
+
+<app-profile-editor></app-profile-editor>
