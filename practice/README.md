@@ -61,3 +61,4 @@
 | Command      | Action                                             |
 | :----------- | :------------------------------------------------- |
 | `pnpm start` | Start local dev server at `http://localhost:4200/` |
+| `pnpm lint`  | Start run lint                                     |
