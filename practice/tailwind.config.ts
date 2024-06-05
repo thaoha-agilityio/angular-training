@@ -1,8 +1,8 @@
-import { borderRadius, colors, fontSizes } from './src/themes';
+import { borderRadius, colors, fontSizes, fontWeights, lineHeights } from './src/themes';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/app/*.{html,ts}'],
+  content: ['./src/app/**/*.{html,ts}'],
   theme: {
     extend: {
       width: {
@@ -11,6 +11,8 @@ module.exports = {
       colors: colors,
       fontSize: fontSizes,
       borderRadius: borderRadius,
+      fontWeight: fontWeights,
+      lineHeight: lineHeights,
     },
   },
   plugins: [],
