@@ -24,7 +24,7 @@ export class ButtonComponent {
 
   getClasses(): string {
     return [
-      'flex items-center justify-center rounded-xs text-sm px-4 py-1 hover:opacity-70',
+      'btn',
       `btn--${this.variant}`,
       `btn--${this.size}`,
       this.disabled ? 'opacity-70 pointer-events-none' : 'cursor-pointer',
