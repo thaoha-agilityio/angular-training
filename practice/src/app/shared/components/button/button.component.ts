@@ -3,6 +3,7 @@ import { NgClass } from '@angular/common';
 
 export type ButtonVariant = 'primary' | 'second' | 'tertiary';
 export type ButtonSize = 'small' | 'medium' | 'lager' | 'auto';
+
 @Component({
   selector: 'app-button',
   standalone: true,
