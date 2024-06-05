@@ -9,19 +9,3 @@
 .btn--secondary {
   @apply bg-bgSecondary text-mainColor;
 }
-
-.btn--small {
-  @apply w-[96px] h-[33px];
-}
-
-.btn--medium {
-  @apply w-[116px] h-[32px];
-}
-
-.btn--lager {
-  @apply w-[176px] h-[32px];
-}
-
-.btn--auto {
-  @apply w-auto h-auto;
-}
