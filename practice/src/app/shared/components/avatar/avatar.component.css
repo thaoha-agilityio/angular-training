@@ -1,0 +1,7 @@
+.avatar--primary {
+  @apply w-[41px] h-[41px] rounded-full;
+}
+
+.avatar--secondary {
+  @apply w-[180px] h-[180px];
+}
