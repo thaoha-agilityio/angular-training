@@ -1,3 +1,7 @@
+.btn {
+  @apply flex items-center justify-center rounded-xs text-sm px-4 py-1 hover:opacity-70;
+}
+
 .btn--primary {
   @apply bg-mainColor text-textReversal;
 }

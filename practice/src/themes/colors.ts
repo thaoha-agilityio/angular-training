@@ -21,4 +21,5 @@ export const colors = {
   // Border color
   borderActive: '#1ca1c1',
   borderError: '#df0404',
+  borderInput: '#ccd7e6',
 };
