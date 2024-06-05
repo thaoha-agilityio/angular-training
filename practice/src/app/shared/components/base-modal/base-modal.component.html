@@ -1,0 +1,24 @@
+<div
+  class="fixed inset-0 z-40 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none opacity-70">
+  <div class="relative my-6 w-[500px]">
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-bgForm outline-none">
+      <button class="text-end px-3" (click)="handleClose()">
+        <span class="block outline-none text-2xl">×</span>
+      </button>
+
+      <div class="flex justify-center p-5 rounded-lg">
+        <p class="text-3xl font-semibold">{{ title }}</p>
+      </div>
+
+      <div class="relative p-6 flex justify-center">{{ description }}</div>
+
+      <div class="flex items-center p-6 rounded-b justify-center gap-10">
+        <button class="button" (click)="handleClose()">{{ textCancel }}</button>
+        <button class="button" (click)="handleSubmit()" [disabled]="isLoading">
+          <span *ngIf="isLoading">Loading...</span>
+          <span *ngIf="!isLoading">{{ textSubmit }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
