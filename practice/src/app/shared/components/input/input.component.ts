@@ -12,15 +12,15 @@ import { FormsModule } from '@angular/forms';
 export class InputComponent {
   @Input() errorMessage?: string;
   @Input() ariaLabel!: string;
-  @Input() type: string = 'text';
+  @Input() type!: string;
   @Input() name!: string;
   @Input() value!: string;
 
-  @Output() change: EventEmitter<string> = new EventEmitter<string>();
+  @Output() changeInput: EventEmitter<string> = new EventEmitter<string>();
 
   onChange(event: Event) {
     const inputValue = (event.target as HTMLInputElement).value;
-    this.change.emit(inputValue);
+    this.changeInput.emit(inputValue);
   }
 
   getClasses(): string {
