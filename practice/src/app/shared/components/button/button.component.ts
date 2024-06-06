@@ -14,12 +14,13 @@ export type ButtonSize = 'small' | 'medium' | 'lager' | 'auto';
 export class ButtonComponent {
   @Input() label!: string;
   @Input() variant!: ButtonVariant;
-  @Input() disabled: boolean = false;
+  @Input() disabled = false;
   @Input() size: ButtonSize = 'auto';
-  @Output() onClick = new EventEmitter<void>();
+
+  @Output() clickButton = new EventEmitter<void>();
 
   onClickButton() {
-    this.onClick.emit();
+    this.clickButton.emit();
   }
 
   getClasses(): string {
