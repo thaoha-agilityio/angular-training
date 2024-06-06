@@ -1,0 +1,13 @@
+<div class="w-[212px] bg-bgSidebar py-5 min-h-screen">
+  <div class="mx-4">
+    <app-button label="+ New" variant="primary" size="lager" />
+  </div>
+  <div
+    [class]="isActive('/user-list') ? 'bg-bgActiveLink border-l border-mainColor' : 'bg-bgSidebar'"
+    class="mt-4">
+    <a href="/user-list" class="flex gap-2 cursor-pointer text-base mx-4 py-3">
+      <app-user-icon [fill]="isActive('/user-list') ? '#1ca1c1' : '#fff'" />
+      <span [class]="isActive('/user-list') ? 'text-mainColor' : 'text-textReversal'">Users</span>
+    </a>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 .btn {
-  @apply flex items-center justify-center rounded-xs text-sm px-4 py-1 hover:opacity-70;
+  @apply flex items-center justify-center rounded-xs text-md px-4 py-1 hover:opacity-70 font-medium;
 }
 
 .btn--primary {
