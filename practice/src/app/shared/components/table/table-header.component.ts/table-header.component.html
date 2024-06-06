@@ -1,0 +1,14 @@
+<thead class="text-center">
+  <tr class="text-base border-b border-px">
+    <ng-container *ngFor="let column of columns; let index = index">
+      <th
+        [ngStyle]="{ width: column.widthPercent + '%' }"
+        class="text-base font-medium pb-3"
+        scope="col"
+        [attr.key]="column.title + '-' + index"
+      >
+        {{ column.title }}
+      </th>
+    </ng-container>
+  </tr>
+</thead>
