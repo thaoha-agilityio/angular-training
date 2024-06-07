@@ -1,0 +1,13 @@
+<thead class="text-center">
+  <tr class="text-base border-b border-mainColor border-px bg-bgSecondary w-full">
+    <ng-container *ngFor="let column of columns">
+      <th
+        [ngStyle]="{ width: column.widthPercent + '%' }"
+        class="text-base text-textDefault font-medium py-4"
+        scope="col"
+        [attr.key]="column.key">
+        {{ column.title }}
+      </th>
+    </ng-container>
+  </tr>
+</thead>

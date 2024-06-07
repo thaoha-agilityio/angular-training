@@ -1,0 +1,25 @@
+<tbody>
+  <ng-container *ngIf="data?.length; else noDataTemplate">
+    <tr
+      *ngFor="let row of data; let rowIndex = index"
+      [attr.key]="'table-row-' + rowIndex"
+      class="border-b border-px">
+      <ng-container *ngFor="let cell of columns; let cellIndex = index">
+        <td
+          [attr.key]="'table-cell-' + rowIndex + '-' + cellIndex"
+          class="text-sm text-textTable py-5">
+          <ng-template #defaultCell>
+            <p class="truncate max-w-[200px]">{{ renderTableCell(cell, row) }}</p>
+          </ng-template>
+        </td>
+      </ng-container>
+    </tr>
+  </ng-container>
+  <ng-template #noDataTemplate>
+    <tr>
+      <td [attr.colspan]="columns.length" class="text-center py-3 text-sm">
+        {{ NOTICE_MESSAGE }}
+      </td>
+    </tr>
+  </ng-template>
+</tbody>
