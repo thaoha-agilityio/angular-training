@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-
-// Components
-import { TableHeaderComponent } from '../table-header/table-header.component';
-import { TableRowComponent } from '../table-row/table-row.component';
+import { NgFor, NgIf, NgStyle } from '@angular/common';
 
 // Constants
 import { USER_COLUMNS } from '@/app/core/constants';
@@ -13,7 +10,7 @@ import { Cell } from '@/app/core/types';
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [TableHeaderComponent, TableRowComponent],
+  imports: [NgStyle, NgFor, NgIf],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })
@@ -34,4 +31,10 @@ export class TableComponent {
       status: 'inactive',
     },
   ];
+
+  readonly NOTICE_MESSAGE = 'No data available';
+
+  renderTableCell(cell: Cell, row: any) {
+    return row[cell.key];
+  }
 }

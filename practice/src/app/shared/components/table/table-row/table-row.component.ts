@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 
 // Types
-import { Cell, ObjectWithTypeCheck } from '@/app/core/types';
-import { NgFor, NgIf } from '@angular/common';
+import { Cell } from '@/app/core/types';
 
 @Component({
   standalone: true,
@@ -11,13 +11,13 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './table-row.component.html',
   styleUrls: ['./table-row.component.css'],
 })
-export class TableRowComponent<T extends ObjectWithTypeCheck> {
+export class TableRowComponent<T> {
   @Input() columns: Cell[] = [];
   @Input() data: T[] = [];
 
   readonly NOTICE_MESSAGE = 'No data available';
 
-  renderTableCell(cell: Cell, row: T) {
+  renderTableCell(cell: Cell, row: any) {
     return row[cell.key];
   }
 }

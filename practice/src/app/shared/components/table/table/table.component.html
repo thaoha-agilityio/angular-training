@@ -1,20 +1,39 @@
-<!-- <table class="w-full" ngSkipHydration>
-  <app-table-header [columns]="columns" />
-  <app-table-row [columns]="columns" [data]="data" />
-</table> -->
-
-<!-- Test -->
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tbody>
-    <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
+<table class="w-full">
+  <thead class="text-center">
+    <tr class="text-base border-b border-mainColor border-px bg-bgSecondary w-full">
+      <ng-container *ngFor="let column of columns">
+        <th
+          [ngStyle]="{ width: column.widthPercent + '%' }"
+          class="text-base text-textDefault font-medium py-4"
+          scope="col"
+          [attr.key]="column.key">
+          {{ column.title }}
+        </th>
+      </ng-container>
     </tr>
+  </thead>
+
+  <tbody>
+    <ng-container *ngIf="data?.length; else noDataTemplate">
+      <tr
+        *ngFor="let row of data; let rowIndex = index"
+        [attr.key]="'table-row-' + rowIndex"
+        class="border-b border-px">
+        <ng-container *ngFor="let cell of columns; let cellIndex = index">
+          <td
+            [attr.key]="'table-cell-' + rowIndex + '-' + cellIndex"
+            class="text-sm text-textTable py-5">
+            {{ renderTableCell(cell, row) }}
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+    <ng-template #noDataTemplate>
+      <tr>
+        <td [attr.colspan]="columns.length" class="text-center py-3 text-sm">
+          {{ NOTICE_MESSAGE }}
+        </td>
+      </tr>
+    </ng-template>
   </tbody>
 </table>
