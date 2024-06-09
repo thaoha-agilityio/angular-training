@@ -1,0 +1,60 @@
+<table class="w-full">
+  <!-- Table header -->
+  <thead class="text-center">
+    <tr class="text-base border-b border-mainColor border-px bg-bgSecondary w-full">
+      <ng-container *ngFor="let column of columns">
+        <th
+          *ngIf="column.key!=='avatar';else avatarPlaceholder"
+          [ngStyle]="{ width: column.widthPercent + '%' }"
+          class="table--header"
+          scope="col"
+          [attr.key]="column.key">
+          {{ column.title }}
+        </th>
+        <ng-template #avatarPlaceholder>
+          <th
+            [ngStyle]="{ width: column.widthPercent + '%' }"
+            scope="col"
+            [attr.key]="column.key">
+            &nbsp;
+          </th>
+        </ng-template>
+      </ng-container>
+    </tr>
+  </thead>
+
+  <!-- Table row -->
+  <tbody>
+    <ng-container *ngIf="data?.length; else noDataTemplate">
+      <tr
+        *ngFor="let row of data; let rowIndex = index"
+        [attr.key]="'table-row-' + rowIndex"
+        class="border-b border-px">
+        <ng-container *ngFor="let cell of columns; let cellIndex = index">
+
+          <td *ngIf="cell.key==='avatar';else noAvatarRow ">
+            <app-avatar [url]="renderTableCell(cell, row)"/>
+          </td>
+
+          <ng-template  #noAvatarRow>
+            <td [attr.key]="'table-cell-' + rowIndex + '-' + cellIndex" class="table--cell" >
+              <ng-container *ngIf="cell.renderCustomCell; else defaultCell">
+                <div [innerHTML]="renderTableCell(cell, row)"> </div>
+              </ng-container>
+              <ng-template #defaultCell>
+                <p>{{ renderTableCell(cell, row) }}</p>
+              </ng-template>
+            </td>
+          </ng-template>
+        </ng-container>
+      </tr>
+    </ng-container>
+    <ng-template #noDataTemplate>
+      <tr>
+        <td [attr.colspan]="columns.length" class="notice--msg">
+          {{ NOTICE_MESSAGE }}
+        </td>
+      </tr>
+    </ng-template>
+  </tbody>
+</table>

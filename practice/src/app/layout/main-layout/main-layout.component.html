@@ -1,17 +1,16 @@
 <!-- Site header -->
 <app-header></app-header>
 
-  <main>
+<main>
+  <div class="flex">
     <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
 
-      <app-sidebar></app-sidebar>
-
-    <div class="flex-grow p-9 overflow-y-auto">
+    <div class="flex-grow p-2 overflow-y-auto">
       <!-- Main content -->
       <div class="content">
         <router-outlet></router-outlet>
       </div>
     </div>
-  </main>
-
-
+  </div>
+</main>

@@ -3,6 +3,9 @@ import { Routes } from '@angular/router';
 // Main layout
 import { MainLayoutComponent } from './layout';
 
+// Components
+import { TableComponent } from './shared/components';
+
 export const routes: Routes = [
   {
     path: '',
@@ -12,5 +15,11 @@ export const routes: Routes = [
   {
     path: 'user-list',
     component: MainLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: TableComponent,
+      },
+    ],
   },
 ];
