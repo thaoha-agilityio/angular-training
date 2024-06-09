@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgIf } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 // Constants
 import { USER_STATUS } from '@/app/core/constants';
 
 // Types
 import { Cell } from '@/app/core/types';
+import { User } from '@/app/core/types/user';
 
 // Components
 import { AvatarComponent, SearchInputComponent, TableComponent } from '@/app/shared/components';
@@ -13,10 +15,6 @@ import { SearchIconComponent } from '@/app/shared/icons';
 
 // Services
 import { UserService } from '../../services/user.service';
-
-// Types
-import { User } from '@/app/core/types/user';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-list',
@@ -34,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [UserService],
 })
 export class UserComponent implements OnInit {
+  isModalOpen = false;
+
   columns: Cell[] = [
     {
       key: 'avatar',
@@ -58,7 +58,6 @@ export class UserComponent implements OnInit {
     },
   ];
 
-  isModalOpen = false;
   users: User[] = [];
 
   constructor(private userService: UserService) {}
