@@ -6,7 +6,7 @@ export const colors = {
   bgSecondary: '#f4f5f9',
   bgBody: '#ebedf0',
   bgSidebar: '#4a4e58',
-  bgInactiveStatus: '#ff6455',
+  bgInactiveStatus: '#ffdedb',
   bgActiveStatus: '#d4ede5',
   bgModalOverlay: '#5A718033',
   bgActiveLink: 'rgba(0, 0, 0, 0.2)',

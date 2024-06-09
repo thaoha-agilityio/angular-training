@@ -15,3 +15,8 @@ export const USER_COLUMNS = [
     widthPercent: 35,
   },
 ];
+
+export enum USER_STATUS {
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
+}
