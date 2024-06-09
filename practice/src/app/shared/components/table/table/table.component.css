@@ -1,11 +1,15 @@
+.table {
+  @apply w-full border;
+}
+
 .table--header {
-  @apply text-base text-textDefault text-left font-medium py-4
+  @apply text-base text-textDefault text-left font-medium py-4;
 }
 
 .table--cell {
-  @apply text-sm text-left py-5
+  @apply text-sm text-left py-5;
 }
 
 .notice--msg {
-  @apply text-center py-3 text-sm
+  @apply text-center py-3 text-sm;
 }
