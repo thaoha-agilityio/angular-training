@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 // Types
-import { User } from '@/app/core/types/user';
+import { User } from '@/app/core/types';
 
 // Services
 import { BaseService } from '@/app/core/services/base.service';

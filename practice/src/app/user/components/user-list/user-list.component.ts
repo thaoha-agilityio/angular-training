@@ -6,8 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { USER_STATUS } from '@/app/core/constants';
 
 // Types
-import { Cell } from '@/app/core/types';
-import { User } from '@/app/core/types/user';
+import { Cell, User } from '@/app/core/types';
 
 // Components
 import { AvatarComponent, SearchInputComponent, TableComponent } from '@/app/shared/components';
