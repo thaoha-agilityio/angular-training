@@ -5,6 +5,9 @@
       <app-search-icon />
     </button>
   </div>
-  <app-search-input *ngIf="isModalOpen" (closeModal)="closeModal()" />
+  <app-search-input
+    *ngIf="isModalOpen"
+    (closeModal)="closeModal()"
+    (searchRequest)="searchUser($event)" />
   <app-table [data]="users" [columns]="columns" />
 </div>

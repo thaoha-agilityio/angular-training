@@ -1,3 +1,4 @@
+import { Subject, debounceTime, switchMap } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +15,6 @@ import { SearchIconComponent } from '@/app/shared/icons';
 
 // Services
 import { UserService } from '../../services/user.service';
-
 @Component({
   selector: 'app-user-list',
   standalone: true,
@@ -59,12 +59,23 @@ export class UserComponent implements OnInit {
 
   users: User[] = [];
 
+  private searchTerms = new Subject<string>();
+
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getUserList().subscribe((data: User[]) => {
+    this.userService.getList().subscribe((data: User[]) => {
       this.users = data;
     });
+
+    this.searchTerms
+      .pipe(
+        debounceTime(800),
+        switchMap((term: string) => this.userService.searchUserByName(term))
+      )
+      .subscribe((data: User[]) => {
+        this.users = data;
+      });
   }
 
   // Handle show search input component
@@ -86,5 +97,10 @@ export class UserComponent implements OnInit {
     const text = status === USER_STATUS.ACTIVE ? 'Active' : 'Not active';
 
     return `<p class="text-base w-fit px-2 py-[2px] rounded-md ${className}">${text}</p>`;
+  }
+
+  // Search user by username
+  searchUser(username: string) {
+    this.searchTerms.next(username.trim());
   }
 }

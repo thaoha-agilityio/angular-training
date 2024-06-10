@@ -12,8 +12,13 @@ import { SearchIconComponent } from '../../icons';
 })
 export class SearchInputComponent {
   @Output() closeModal = new EventEmitter<void>();
+  @Output() searchRequest = new EventEmitter<any>();
 
   close(): void {
     this.closeModal.emit();
+  }
+
+  changeInput(value: string) {
+    this.searchRequest.emit(value);
   }
 }

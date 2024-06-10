@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 // Types
@@ -8,14 +9,22 @@ import { User } from '@/app/core/types';
 import { BaseService } from '@/app/core/services/base.service';
 
 // Constants
-import { ROUTES } from '@/app/core/constants';
+import { API_PATH, SEARCH_PARAMS } from '@/app/core/constants';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UserService extends BaseService<User> {
+  constructor(http: HttpClient) {
+    super(http);
+    this.path = API_PATH.USERS;
+  }
+
   /**
-   * Get user list
+   * Search users by name
+   * @param name
    */
-  getUserList(): Observable<User[]> {
-    return this.getList(`${ROUTES.USERS}`);
+  searchUserByName(name: string): Observable<User[]> {
+    const params = `${this.path}?${SEARCH_PARAMS.USERNAME}=${name}`;
+
+    return this.getWithParams(params);
   }
 }

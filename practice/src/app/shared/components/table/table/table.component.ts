@@ -7,6 +7,9 @@ import { Cell } from '@/app/core/types';
 // Components
 import { AvatarComponent } from '../..';
 
+// Constants
+import { NOTICE_MESSAGE } from '@/app/core/constants';
+
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -18,7 +21,7 @@ export class TableComponent<T> {
   @Input() columns: Cell[] = [];
   @Input() data: T[] = [];
 
-  readonly NOTICE_MESSAGE = 'No data available';
+  readonly NOTICE_MESSAGE = NOTICE_MESSAGE;
 
   renderTableCell(cell: Cell, row: any) {
     if (cell.renderCustomCell) {

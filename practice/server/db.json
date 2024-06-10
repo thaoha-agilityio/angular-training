@@ -9,7 +9,28 @@
     },
     {
       "id": 2,
-      "fullName": "Floyd Miles",
+      "fullName": "Ned Stark",
+      "email": "jane@microsoft.com",
+      "status": "inactive",
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Adobe_Systems_logo_and_wordmark.svg/220px-Adobe_Systems_logo_and_wordmark.svg.png"
+    },
+    {
+      "id": 3,
+      "fullName": "Lord Varys",
+      "email": "jane@microsoft.com",
+      "status": "inactive",
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Adobe_Systems_logo_and_wordmark.svg/220px-Adobe_Systems_logo_and_wordmark.svg.png"
+    },
+    {
+      "id": 4,
+      "fullName": "Francis Bacon",
+      "email": "jane@microsoft.com",
+      "status": "inactive",
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Adobe_Systems_logo_and_wordmark.svg/220px-Adobe_Systems_logo_and_wordmark.svg.png"
+    },
+    {
+      "id": 5,
+      "fullName": "Jon Snow",
       "email": "jane@microsoft.com",
       "status": "inactive",
       "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Adobe_Systems_logo_and_wordmark.svg/220px-Adobe_Systems_logo_and_wordmark.svg.png"
