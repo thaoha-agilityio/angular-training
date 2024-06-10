@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 // Components
 import { AvatarComponent, AvatarVariant, DetailModalComponent } from '@/app/shared/components';
@@ -25,4 +25,10 @@ import {
 })
 export class UserDetailComponent {
   variant: AvatarVariant = 'secondary';
+
+  @Output() closeDetailModal: EventEmitter<void> = new EventEmitter<void>();
+
+  handleClose() {
+    this.closeDetailModal.emit();
+  }
 }

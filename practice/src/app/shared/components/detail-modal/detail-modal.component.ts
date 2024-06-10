@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // Components
 import { EditIconComponent } from '../../icons';
@@ -10,4 +10,12 @@ import { EditIconComponent } from '../../icons';
   templateUrl: './detail-modal.component.html',
   styleUrl: './detail-modal.component.css',
 })
-export class DetailModalComponent {}
+export class DetailModalComponent {
+  @Input() title!: string;
+
+  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
+
+  handleClose() {
+    this.closeModal.emit();
+  }
+}
