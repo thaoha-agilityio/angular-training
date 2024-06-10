@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgClass } from '@angular/common';
 
-export type ButtonVariant = 'primary' | 'second' | 'tertiary';
+export type ButtonVariant = 'primary' | 'second' | 'tertiary' | 'text';
 export type ButtonSize = 'small' | 'medium' | 'lager' | 'auto';
 
 @Component({
