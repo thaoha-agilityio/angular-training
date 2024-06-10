@@ -26,7 +26,8 @@
       <tr
         *ngFor="let row of data; let rowIndex = index"
         [attr.key]="'table-row-' + rowIndex"
-        class="border-b border-px">
+        class="border-b border-px cursor-pointer"
+        (click)="onClickRow(row.id)">
         <ng-container *ngFor="let cell of columns; let cellIndex = index">
           <td *ngIf="cell.key === 'avatar'; else noAvatarRow">
             <app-avatar [url]="renderTableCell(cell, row)" />
