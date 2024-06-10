@@ -9,6 +9,7 @@
     "serve:ssr:practice": "node dist/practice/server/server.mjs",
     "pretty-quick": "pretty-quick --staged",
     "prepare": "cd .. && husky install practice/.husky",
+    "server": "npx json-server ./server/db.json",
     "lint": "ng lint"
   },
   "private": true,
@@ -24,7 +25,9 @@
     "@angular/router": "^18.0.0",
     "@angular/ssr": "^18.0.2",
     "express": "^4.18.2",
+    "json-server": "1.0.0-beta.1",
     "rxjs": "~7.8.0",
+    "rxjs-observable": "^0.0.7",
     "tailwindcss": "^3.4.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

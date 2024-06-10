@@ -1,0 +1,15 @@
+.active--status {
+  @apply text-textActiveStatus bg-bgActiveStatus;
+}
+
+.inactive--status{
+  @apply text-textInactiveStatus bg-bgInactiveStatus;
+}
+
+.user--status{
+  @apply text-base w-fit
+}
+
+.users {
+  @apply flex justify-between gap-2 border p-2;
+}

@@ -1,0 +1,10 @@
+<div>
+  <div class="users" *ngIf="!isModalOpen">
+    <p class="text-md font-semibold text-textSecondary">Users</p>
+    <button (click)="openModal()">
+      <app-search-icon />
+    </button>
+  </div>
+  <app-search-input *ngIf="isModalOpen" (closeModal)="closeModal()" />
+  <app-table [data]="users" [columns]="columns" />
+</div>
