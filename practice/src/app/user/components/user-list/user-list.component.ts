@@ -12,6 +12,7 @@ import { Cell, User } from '@/app/core/types';
 // Components
 import { AvatarComponent, SearchInputComponent, TableComponent } from '@/app/shared/components';
 import { SearchIconComponent } from '@/app/shared/icons';
+import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 // Services
 import { UserService } from '../../services/user.service';
@@ -27,6 +28,7 @@ import { UserService } from '../../services/user.service';
     SearchIconComponent,
     NgIf,
     HttpClientModule,
+    UserDetailComponent,
   ],
   providers: [UserService],
 })
@@ -90,13 +92,10 @@ export class UserComponent implements OnInit {
 
   // Render status user
   renderCustomStatusUser(status: USER_STATUS) {
-    const className =
-      status === USER_STATUS.ACTIVE
-        ? 'text-textActiveStatus bg-bgActiveStatus'
-        : 'text-textInactiveStatus bg-bgInactiveStatus';
+    const className = status === USER_STATUS.ACTIVE ? 'status--active' : 'status--inactive';
     const text = status === USER_STATUS.ACTIVE ? 'Active' : 'Not active';
 
-    return `<p class="text-base w-fit px-2 py-[2px] rounded-md ${className}">${text}</p>`;
+    return `<p class="status ${className}">${text}</p>`;
   }
 
   // Search user by username
