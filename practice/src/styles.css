@@ -8,3 +8,34 @@
     font-family: 'Roboto', sans-serif;
   }
 }
+
+/* Text */
+.text--default {
+  @apply text-base text-textDefault font-medium;
+}
+
+.text--title {
+  @apply text-md text-textSecondary font-medium;
+}
+
+.text--secondary {
+  @apply text-base text-textSecondary;
+}
+
+/* Button */
+.btn--close {
+  @apply text-textSecondary text-md hover:bg-bgSecondary rounded-full w-8 h-8;
+}
+
+/* Status */
+.status {
+  @apply text-base w-fit px-2 py-[2px] rounded-md font-medium;
+}
+
+.status--inactive {
+  @apply text-textInactiveStatus bg-bgInactiveStatus;
+}
+
+.status--active {
+  @apply text-textActiveStatus bg-bgActiveStatus;
+}

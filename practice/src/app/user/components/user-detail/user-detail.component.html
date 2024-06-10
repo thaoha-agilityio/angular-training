@@ -1,0 +1,41 @@
+<!-- User detail -->
+<app-detail-modal>
+  <div class="flex justify-center">
+    <app-avatar
+      url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWhgJJG9oTxy-VPIWn3TPLf8usxWa_fFVMTCHAta8obA&s"
+      [variant]="variant" />
+  </div>
+  <p class="text--default text-center">Tyrion Lannister</p>
+
+  <div class="pt-4">
+    <!-- Email -->
+    <div class="pb-7">
+      <div class="flex gap-3">
+        <app-email-icon />
+        <p class="text--default">Email:</p>
+      </div>
+      <p class="text--secondary pl-8">80.y.o.in.bed</p>
+    </div>
+
+    <!-- Last visited -->
+    <div class="pb-7">
+      <div class="flex gap-3">
+        <app-clock-icon />
+        <p class="text--default">Last visited:</p>
+      </div>
+      <p class="text--secondary pl-8">Unknown</p>
+    </div>
+
+    <!-- Roles -->
+    <div class="flex gap-3 pb-7">
+      <app-profile-icon />
+      <p class="text--default">Roles (0)</p>
+    </div>
+
+    <!-- Rules -->
+    <div class="flex gap-3 pb-7">
+      <app-list-icon />
+      <p class="text--default">Rules (0)</p>
+    </div>
+  </div>
+</app-detail-modal>
