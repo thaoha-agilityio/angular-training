@@ -1,10 +1,8 @@
-<form>
-  <div class="flex justify-between gap-2 border p-2">
-    <app-input placeholder="Search" class="w-full" />
-    <button
-      class="text-textSecondary text-md hover:bg-bgSecondary rounded-full w-8 h-8"
-      (click)="close()">
-      <span>×</span>
-    </button>
-  </div>
-</form>
+<div class="flex justify-between gap-2 border p-2">
+  <app-input placeholder="Search" class="w-full" (changeInput)="changeInput($event)" />
+  <button
+    class="text-textSecondary text-md hover:bg-bgSecondary rounded-full w-8 h-8"
+    (click)="close()">
+    <span>×</span>
+  </button>
+</div>
