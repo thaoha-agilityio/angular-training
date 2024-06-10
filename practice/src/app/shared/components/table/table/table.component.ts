@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 
-// Constants
-import { USER_COLUMNS } from '@/app/core/constants';
-
 // Types
 import { Cell } from '@/app/core/types';
+
+// Components
 import { AvatarComponent } from '../..';
 
 @Component({

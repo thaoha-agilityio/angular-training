@@ -9,6 +9,7 @@
     "serve:ssr:practice": "node dist/practice/server/server.mjs",
     "pretty-quick": "pretty-quick --staged",
     "prepare": "cd .. && husky install practice/.husky",
+    "server": "npx json-server ./server/db.json",
     "lint": "ng lint"
   },
   "private": true,
