@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './layout';
 
 // Components
-import { TableComponent } from './shared/components';
+import { UserComponent } from './user/components';
 
 export const routes: Routes = [
   {
@@ -18,7 +18,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: TableComponent,
+        component: UserComponent,
       },
     ],
   },

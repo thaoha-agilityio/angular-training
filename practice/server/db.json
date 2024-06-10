@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Floyd Miles",
+      "email": "jane@microsoft.com",
+      "status": "active",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWhgJJG9oTxy-VPIWn3TPLf8usxWa_fFVMTCHAta8obA&s"
+    },
+    {
+      "id": 2,
+      "fullName": "Floyd Miles",
+      "email": "jane@microsoft.com",
+      "status": "inactive",
+      "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Adobe_Systems_logo_and_wordmark.svg/220px-Adobe_Systems_logo_and_wordmark.svg.png"
+    }
+  ]
+}
