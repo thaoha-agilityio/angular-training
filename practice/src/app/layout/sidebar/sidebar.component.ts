@@ -5,7 +5,7 @@ import { NgIf } from '@angular/common';
 // Components
 import { ButtonComponent, MenuComponent } from '@/app/shared/components';
 import { UserIconComponent } from '@/app/shared/icons';
-import { UserCreateComponent } from '@/app/user/components/user-create/user-create.component';
+import { UserCreateComponent } from '@/app/user/components';
 
 @Component({
   selector: 'app-sidebar',
