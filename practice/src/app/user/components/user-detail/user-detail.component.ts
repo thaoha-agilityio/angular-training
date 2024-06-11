@@ -32,7 +32,8 @@ import { getFirstLetter, nameToColorHex } from '@/app/core/utils';
 export class UserDetailComponent implements OnChanges {
   variant: AvatarVariant = 'secondary';
   title = 'User information';
-  bgColor!: string;
+  bgColor = '';
+  firstLetter = '';
 
   @Input() userDetail!: User;
   @Output() closeDetailModal: EventEmitter<void> = new EventEmitter<void>();
