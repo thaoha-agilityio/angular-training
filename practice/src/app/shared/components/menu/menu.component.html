@@ -3,7 +3,13 @@
   (click)="onOverlayClick($event)"
   aria-hidden="true">
   <div class="w-[176px] shadow-2xl bg-bgSidebar" #menu>
-    <app-button label="Add new user" variant="menu" size="lager" />
+    <app-button
+      label="Add new user"
+      variant="menu"
+      size="lager"
+      (clickButton)="openAddUserModal()" />
     <app-button label="Add new role" variant="menu" size="lager" />
   </div>
 </div>
+
+<app-user-create *ngIf="isShowAddUserModal" (closeModal)="closeAddUserModal()" />
