@@ -1,11 +1,12 @@
 <div class="boder w-[348px] bg-bgPrimary min-h-[calc(100vh-73px)]">
   <div class="border flex justify-between p-1" style="align-items: baseline">
-    <button class="btn--close">
+    <button class="btn--close" (click)="handleClose()">
       <span>×</span>
     </button>
-    <p class="text--title">User information</p>
-
-    <p class="status status--inactive">Not active</p>
+    <p class="text--title">{{ title }}</p>
+    <p *ngIf="status" class="status status--{{ status === activeStatus ? 'active' : 'inactive' }}">
+      {{ status === activeStatus ? 'Active' : 'Not active' }}
+    </p>
     <button>
       <app-edit-icon />
     </button>

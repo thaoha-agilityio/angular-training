@@ -34,6 +34,7 @@ import { UserService } from '../../services/user.service';
 })
 export class UserComponent implements OnInit {
   isModalOpen = false;
+  isOpenDetailModal = false;
 
   columns: Cell[] = [
     {
@@ -60,6 +61,7 @@ export class UserComponent implements OnInit {
   ];
 
   users: User[] = [];
+  user: User = {} as User;
 
   private searchTerms = new Subject<string>();
 
@@ -101,5 +103,18 @@ export class UserComponent implements OnInit {
   // Search user by username
   searchUser(username: string) {
     this.searchTerms.next(username.trim());
+  }
+
+  // Handle close detail modal component
+  closeDetailModal(): void {
+    this.isOpenDetailModal = false;
+  }
+
+  // Handle show user detail
+  showUserDetail(id: number) {
+    this.isOpenDetailModal = true;
+    this.userService.getItem(id.toString()).subscribe((data: User) => {
+      this.user = data;
+    });
   }
 }

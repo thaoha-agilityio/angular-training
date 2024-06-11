@@ -1,4 +1,23 @@
+/**
+ * Returns the first letter of the given string.
+ *
+ * @param {string} str - The string to extract the first letter from.
+ * @returns {string} - The first letter of the string, or an empty string if the input is not valid.
+ */
+export const getFirstLetter = (str: string) => {
+  if (typeof str === 'string' && str.length > 0) {
+    return str.charAt(0);
+  }
+
+  return '';
+};
+
 export const nameToColorHex = (name: string): string => {
+  // Handle the case where name is undefined, null, or not a string
+  if (!name || typeof name !== 'string') {
+    return '#000000'; // Return a default color
+  }
+
   // Create a hash of the name using a simple hashing algorithm
   const hashCode = (str: string) => {
     let hash = 0;

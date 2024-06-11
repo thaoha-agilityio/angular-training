@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 
 // Types
@@ -17,9 +17,11 @@ import { NOTICE_MESSAGE } from '@/app/core/constants';
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })
-export class TableComponent<T> {
+export class TableComponent<T extends { id: number }> {
   @Input() columns: Cell[] = [];
   @Input() data: T[] = [];
+
+  @Output() clickRow: EventEmitter<number> = new EventEmitter<number>();
 
   readonly NOTICE_MESSAGE = NOTICE_MESSAGE;
 
@@ -29,5 +31,9 @@ export class TableComponent<T> {
     }
 
     return row[cell.key];
+  }
+
+  onClickRow(id: number) {
+    this.clickRow.emit(id);
   }
 }

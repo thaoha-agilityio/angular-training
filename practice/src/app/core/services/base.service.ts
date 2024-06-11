@@ -30,7 +30,7 @@ export class BaseService<T> {
   }
 
   getItem(url: string): Observable<T> {
-    return this.http.get<T>(this.getFullUrl(url));
+    return this.http.get<T>(this.getFullUrl(`${this.path}/${url}`));
   }
 
   /**

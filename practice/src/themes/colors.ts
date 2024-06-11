@@ -18,6 +18,7 @@ export const colors = {
   textActiveStatus: '#55cd97',
   textInactiveStatus: '#ff6455',
   textError: '#df0404',
+  textAvatar: 'rgba(255, 255, 255, 0.5)',
 
   // Border color
   borderActive: '#1ca1c1',
