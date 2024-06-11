@@ -3,12 +3,11 @@ import { NgIf } from '@angular/common';
 
 // Components
 import { ButtonComponent } from '..';
-import { UserCreateComponent } from '@/app/user/components/user-create/user-create.component';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [ButtonComponent, NgIf, UserCreateComponent],
+  imports: [ButtonComponent, NgIf],
   templateUrl: './menu.component.html',
 })
 export class MenuComponent {
@@ -16,6 +15,7 @@ export class MenuComponent {
 
   @ViewChild('menu') menu!: ElementRef;
   @Output() closeMenuModal = new EventEmitter<void>();
+  @Output() openAddUserModal = new EventEmitter<void>();
 
   onOverlayClick(event: MouseEvent): void {
     if (!this.menu.nativeElement.contains(event.target)) {
@@ -29,12 +29,7 @@ export class MenuComponent {
   }
 
   // Handle show Add User modal
-  openAddUserModal(): void {
-    this.isShowAddUserModal = true;
-  }
-
-  // Handle close Add User modal
-  closeAddUserModal(): void {
-    this.isShowAddUserModal = false;
+  onOpenAddUserModal(): void {
+    this.openAddUserModal.emit();
   }
 }

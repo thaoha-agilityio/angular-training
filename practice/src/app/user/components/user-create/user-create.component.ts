@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
-import { BaseModalComponent } from '@/app/shared/components';
+import { BaseModalComponent, ButtonComponent, InputComponent } from '@/app/shared/components';
 @Component({
   selector: 'app-user-create',
   standalone: true,
-  imports: [BaseModalComponent],
+  imports: [BaseModalComponent, InputComponent, ButtonComponent],
   templateUrl: './user-create.component.html',
 })
 export class UserCreateComponent {

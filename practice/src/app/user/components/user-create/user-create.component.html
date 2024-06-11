@@ -1,1 +1,6 @@
-<app-base-modal title="Enter user name" (closeModal)="onClose()"> test </app-base-modal>
+<app-base-modal title="Enter user name" (closeModal)="onClose()">
+  <div class="flex justify-between gap-10">
+    <app-input />
+    <app-button label="Save" variant="primary" size="small"/>
+  </div>
+</app-base-modal>
