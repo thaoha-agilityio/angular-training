@@ -14,6 +14,10 @@
   @apply bg-bgSecondary text-mainColor;
 }
 
+.btn--menu {
+  @apply bg-bgSidebar text-base text-textReversal font-normal hover:bg-bgActiveLink;
+}
+
 .btn--small {
   @apply w-[96px] h-[33px];
 }
@@ -23,7 +27,7 @@
 }
 
 .btn--lager {
-  @apply w-[176px] h-[32px];
+  @apply w-[176px] h-[36px];
 }
 
 .btn--auto {

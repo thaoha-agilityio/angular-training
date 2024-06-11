@@ -1,7 +1,10 @@
 <div class="w-[212px] bg-bgSidebar py-5 min-h-[calc(100vh-56px)]">
-  <div class="mx-4">
-    <app-button label="+ New" variant="primary" size="lager" />
+  <div class="mx-4 relative">
+    <app-button label="+ New" variant="primary" size="lager" (clickButton)="openMenuModal()" />
   </div>
+
+  <app-menu *ngIf="isShowMenu" (closeMenuModal)="closeMenuModal()" />
+
   <div
     [class]="isActive('/user-list') ? 'bg-bgActiveLink border-l border-mainColor' : 'bg-bgSidebar'"
     class="mt-4">

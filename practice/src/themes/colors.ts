@@ -10,6 +10,7 @@ export const colors = {
   bgActiveStatus: '#d4ede5',
   bgModalOverlay: '#5A718033',
   bgActiveLink: 'rgba(0, 0, 0, 0.2)',
+  bgMenu: '#4a4b58',
 
   // Text color
   textDefault: '#313131',
