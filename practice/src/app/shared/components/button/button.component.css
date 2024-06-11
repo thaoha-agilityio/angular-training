@@ -15,7 +15,7 @@
 }
 
 .btn--text {
-  @apply bg-bgSidebar text-base text-textReversal
+  @apply bg-bgSidebar text-base text-textReversal font-normal hover:bg-bgActiveLink;
 }
 
 .btn--small {
@@ -27,7 +27,7 @@
 }
 
 .btn--lager {
-  @apply w-[176px] h-[32px];
+  @apply w-[176px] h-[36px];
 }
 
 .btn--auto {
