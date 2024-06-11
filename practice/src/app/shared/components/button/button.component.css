@@ -14,7 +14,7 @@
   @apply bg-bgSecondary text-mainColor;
 }
 
-.btn--text {
+.btn--menu {
   @apply bg-bgSidebar text-base text-textReversal font-normal hover:bg-bgActiveLink;
 }
 
