@@ -1,16 +1,23 @@
 <!-- User detail -->
-<app-detail-modal title="User information" (closeModal)="handleClose()">
+<app-detail-modal
+  title="User information"
+  (closeModal)="handleClose()"
+  [status]="userDetail.status">
   <div class="flex justify-center">
     <app-avatar
-      *ngIf="userDetail.avatar;else avatarDefault"
-      url={{userDetail.avatar}}
+      *ngIf="userDetail.avatar; else avatarDefault"
+      url="{{ userDetail.avatar }}"
       [variant]="variant" />
 
     <ng-template #avatarDefault>
-      <div class='text-white w-[180px] h-[180px] text-[120px] text-center' [style.background]="bgColor">{{firstLetter}}</div>
-    </ng-template >
+      <div
+        class="text-white w-[180px] h-[180px] text-[120px] text-center"
+        [style.background]="bgColor">
+        {{ firstLetter }}
+      </div>
+    </ng-template>
   </div>
-  <p class="text--default text-center">{{userDetail.fullName}}</p>
+  <p class="text--default text-center pt-4">{{ userDetail.fullName }}</p>
 
   <div class="py-4">
     <!-- Email -->
@@ -19,7 +26,7 @@
         <app-email-icon />
         <p class="text--default">Email:</p>
       </div>
-      <p class="text--secondary pl-8">{{userDetail.email|| 'Unknown'}}</p>
+      <p class="text--secondary pl-8">{{ userDetail.email || 'Unknown' }}</p>
     </div>
 
     <!-- Last visited -->

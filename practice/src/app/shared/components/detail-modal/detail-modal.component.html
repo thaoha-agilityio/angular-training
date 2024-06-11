@@ -4,7 +4,9 @@
       <span>×</span>
     </button>
     <p class="text--title">{{ title }}</p>
-    <p class="status status--inactive">Not active</p>
+    <p *ngIf="status" class="status status--{{ status === activeStatus ? 'active' : 'inactive' }}">
+      {{ status === activeStatus ? 'Active' : 'Not active' }}
+    </p>
     <button>
       <app-edit-icon />
     </button>
