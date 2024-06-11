@@ -1,6 +1,14 @@
 <app-base-modal title="Enter user name" (closeModal)="onClose()">
-  <div class="flex justify-between gap-10">
-    <app-input />
-    <app-button label="Save" variant="primary" size="small"/>
-  </div>
+  <form [formGroup]="createUser" (ngSubmit)="onSubmit()">
+    <div class="flex justify-between gap-10">
+      <!-- <app-input
+        name="fullName"
+        [errorMessage]="errorMessage"
+        placeholder="Enter fullName"
+        formControlName="fullName" /> -->
+
+      <input name="fullName" placeholder="Enter fullName" formControlName="fullName" />
+      <app-button label="Save" variant="primary" size="small" type="submit" />
+    </div>
+  </form>
 </app-base-modal>

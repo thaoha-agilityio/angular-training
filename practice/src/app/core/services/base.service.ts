@@ -40,4 +40,13 @@ export class BaseService<T> {
   getWithParams(url: string): Observable<T[]> {
     return this.http.get<T[]>(this.getFullUrl(url));
   }
+
+  /**
+   * Call API with POST method
+   * @param url
+   * @param body
+   */
+  post(item: any): Observable<T> {
+    return this.http.post<T>(this.getFullUrl(this.path), item);
+  }
 }
