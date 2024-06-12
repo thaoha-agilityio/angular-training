@@ -6,8 +6,7 @@
     [name]="name"
     [(ngModel)]="value"
     (input)="onChange($event)"
-    [attr.placeholder]="placeholder"
-    [formControl]="formControl" />
+    [attr.placeholder]="placeholder" />
   <ng-container *ngIf="errorMessage">
     <div class="text-sm text-textError">{{ errorMessage }}</div>
   </ng-container>

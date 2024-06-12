@@ -1,6 +1,9 @@
 import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Directives
+import { ControlValueAccessorDirective } from '../../directives';
 
 @Component({
   selector: 'app-input',
@@ -8,6 +11,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [NgIf, FormsModule, ReactiveFormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css',
+  hostDirectives: [ControlValueAccessorDirective],
 })
 export class InputComponent {
   @Input() errorMessage?: string;
@@ -16,7 +20,6 @@ export class InputComponent {
   @Input() name!: string;
   @Input() value!: string;
   @Input() placeholder?: string;
-  @Input() formControl!: FormControl;
 
   @Output() changeInput: EventEmitter<string> = new EventEmitter<string>();
 

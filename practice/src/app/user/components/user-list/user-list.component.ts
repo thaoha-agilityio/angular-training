@@ -1,5 +1,5 @@
 import { Subject, debounceTime, switchMap } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges, OnInit } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,6 +16,7 @@ import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 // Services
 import { UserService } from '../../services/user.service';
+import { getFirstLetter, nameToColorHex } from '@/app/core/utils';
 @Component({
   selector: 'app-user-list',
   standalone: true,
@@ -31,11 +32,13 @@ import { UserService } from '../../services/user.service';
     UserDetailComponent,
   ],
   providers: [UserService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnChanges {
   isModalOpen = false;
   isOpenDetailModal = false;
-
+  bgColor = '';
+  firstLetter = '';
   columns: Cell[] = [
     {
       key: 'avatar',
@@ -68,9 +71,7 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getList().subscribe((data: User[]) => {
-      this.users = data;
-    });
+    this.setUsers();
 
     this.searchTerms
       .pipe(
@@ -80,6 +81,18 @@ export class UserComponent implements OnInit {
       .subscribe((data: User[]) => {
         this.users = data;
       });
+  }
+
+  ngOnChanges(): void {
+    this.bgColor = nameToColorHex(this.user.fullName);
+    this.firstLetter = getFirstLetter(this.user.fullName);
+  }
+
+  //  Call service to get product list from server then set response data to products if success
+  setUsers(): void {
+    this.userService.getList().subscribe((data: User[]) => {
+      this.users = data;
+    });
   }
 
   // Handle show search input component

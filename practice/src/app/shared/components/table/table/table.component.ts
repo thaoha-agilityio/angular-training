@@ -20,8 +20,11 @@ import { NOTICE_MESSAGE } from '@/app/core/constants';
 export class TableComponent<T extends { id: number }> {
   @Input() columns: Cell[] = [];
   @Input() data: T[] = [];
+  @Input() bgColor?: string;
+  @Input() firstLetter?: string;
 
   @Output() clickRow: EventEmitter<number> = new EventEmitter<number>();
+  @Output() avatarDefault: EventEmitter<number> = new EventEmitter<number>();
 
   readonly NOTICE_MESSAGE = NOTICE_MESSAGE;
 
@@ -35,5 +38,9 @@ export class TableComponent<T extends { id: number }> {
 
   onClickRow(id: number) {
     this.clickRow.emit(id);
+  }
+
+  onAvatarDefault() {
+    this.avatarDefault.emit();
   }
 }
