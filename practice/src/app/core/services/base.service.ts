@@ -46,7 +46,7 @@ export class BaseService<T> {
    * @param url
    * @param body
    */
-  post(item: any): Observable<T> {
-    return this.http.post<T>(this.getFullUrl(this.path), item);
+  post<T, K>(item: T): Observable<K> {
+    return this.http.post<K>(this.getFullUrl(this.path), item);
   }
 }
