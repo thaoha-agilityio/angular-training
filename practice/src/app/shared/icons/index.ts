@@ -1,3 +1,4 @@
+export * from './arrow-right-icon/arrow-right-icon.component';
 export * from './clock-icon/clock-icon.component';
 export * from './edit-icon/edit-icon.component';
 export * from './profile-icon/profile-icon.component';

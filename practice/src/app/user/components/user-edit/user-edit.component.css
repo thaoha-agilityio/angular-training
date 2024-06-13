@@ -1,0 +1,7 @@
+.form--group {
+  @apply min-w-[400px] flex mt-5;
+}
+
+.label {
+  @apply text-base text-textDefault font-medium pr-5;
+}
