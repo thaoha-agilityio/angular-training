@@ -73,6 +73,10 @@ export class UserComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.setUsers();
 
+    this.userService.dataChanged$.subscribe(() => {
+      this.setUsers();
+    });
+
     this.searchTerms
       .pipe(
         debounceTime(800),
