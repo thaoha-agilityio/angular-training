@@ -7,7 +7,7 @@
 
   <!-- Form -->
   <div class="p-5">
-    <form>
+    <form [formGroup]="editUser">
       <div class="flex justify-end pb-10 gap-4">
         <app-button label="Delete" variant="secondary" size="medium" />
         <app-button label="Save" variant="primary" type="submit" size="medium" />
@@ -18,11 +18,11 @@
         style="align-items: baseline; grid-template-columns: 100px 286px">
         <!-- Full name -->
         <label class="label" for="full-name">Full Name</label>
-        <app-input id="full-name" />
+        <app-input id="full-name" formControlName="fullName" />
 
         <!-- Email -->
         <label class="label" for="email">Email</label>
-        <app-input id="email" />
+        <app-input id="email" formControlName="email" />
 
         <!-- Avatar -->
         <label class="label" for="avatar">Avatar</label>

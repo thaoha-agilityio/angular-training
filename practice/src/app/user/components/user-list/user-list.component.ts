@@ -144,8 +144,8 @@ export class UserComponent implements OnInit {
 
   // Show edit user form
   showEditForm() {
-    this.isShowEditForm = true;
     this.closeDetailModal();
+    this.isShowEditForm = true;
   }
 
   closeEditForm() {

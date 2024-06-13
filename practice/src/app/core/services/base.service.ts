@@ -36,9 +36,25 @@ export class BaseService<T> {
     return this.http.get<T[]>(this.getFullUrl(url));
   }
 
+  /**
+   * Call API with POST method
+   * @param item
+   */
   post<K>(item: T): Observable<K> {
     return this.http.post<K>(this.getFullUrl(this.path), item).pipe(
       tap((response: K) => {
+        this.dataChangedSubject.next(response);
+      })
+    );
+  }
+
+  /**
+   * Call API with PUT method
+   * @param url
+   */
+  put(item: T): Observable<T> {
+    return this.http.put<T>(this.getFullUrl(this.path), item).pipe(
+      tap((response: T) => {
         this.dataChangedSubject.next(response);
       })
     );
