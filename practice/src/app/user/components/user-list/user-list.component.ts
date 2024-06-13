@@ -1,5 +1,5 @@
 import { Subject, debounceTime, switchMap } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,6 +16,7 @@ import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 // Services
 import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'app-user-list',
   standalone: true,
@@ -30,12 +31,14 @@ import { UserService } from '../../services/user.service';
     HttpClientModule,
     UserDetailComponent,
   ],
-  providers: [UserService],
+  providers: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserComponent implements OnInit {
   isModalOpen = false;
   isOpenDetailModal = false;
-
+  bgColor = '';
+  firstLetter = '';
   columns: Cell[] = [
     {
       key: 'avatar',
@@ -65,11 +68,19 @@ export class UserComponent implements OnInit {
 
   private searchTerms = new Subject<string>();
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    this.userService.getList().subscribe((data: User[]) => {
-      this.users = data;
+    this.setUsers();
+
+    this.userService.dataChanged$.subscribe((item: User) => {
+      if (!item) return;
+
+      this.users = [...this.users.concat(item)];
+      this.cdr.detectChanges();
     });
 
     this.searchTerms
@@ -79,7 +90,15 @@ export class UserComponent implements OnInit {
       )
       .subscribe((data: User[]) => {
         this.users = data;
+        this.cdr.detectChanges();
       });
+  }
+
+  //  Call service to get product list from server then set response data to products if success
+  setUsers(): void {
+    this.userService.getList().subscribe((data: User[]) => {
+      this.users = data;
+    });
   }
 
   // Handle show search input component
@@ -113,8 +132,10 @@ export class UserComponent implements OnInit {
   // Handle show user detail
   showUserDetail(id: number) {
     this.isOpenDetailModal = true;
+
     this.userService.getItem(id.toString()).subscribe((data: User) => {
       this.user = data;
+      this.cdr.detectChanges();
     });
   }
 }

@@ -1,13 +1,17 @@
 import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Directives
+import { ControlValueAccessorDirective } from '../../directives';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [NgIf, FormsModule],
+  imports: [NgIf, FormsModule, ReactiveFormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css',
+  hostDirectives: [ControlValueAccessorDirective],
 })
 export class InputComponent {
   @Input() errorMessage?: string;

@@ -12,9 +12,12 @@
       (searchRequest)="searchUser($event)" />
 
     <!-- User table -->
-    <app-table [data]="users" [columns]="columns" (clickRow)="showUserDetail($event)"/>
+    <app-table [data]="users" [columns]="columns" (clickRow)="showUserDetail($event)" />
   </div>
 
   <!-- User detail -->
-  <app-user-detail *ngIf="isOpenDetailModal" (closeDetailModal)="closeDetailModal()" [userDetail]="user" />
+  <app-user-detail
+    *ngIf="isOpenDetailModal"
+    (closeDetailModal)="closeDetailModal()"
+    [userDetail]="user" />
 </div>

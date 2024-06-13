@@ -1,6 +1,7 @@
 export const fontSizes = {
   base: '14px',
   md: '16px',
+  lg: '20px',
 };
 
 export const fontWeights = {

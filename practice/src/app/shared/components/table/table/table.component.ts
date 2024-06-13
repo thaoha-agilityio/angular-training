@@ -10,6 +10,9 @@ import { AvatarComponent } from '../..';
 // Constants
 import { NOTICE_MESSAGE } from '@/app/core/constants';
 
+// Utils
+import { getFirstLetter, nameToColorHex } from '@/app/core/utils';
+
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -17,7 +20,7 @@ import { NOTICE_MESSAGE } from '@/app/core/constants';
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })
-export class TableComponent<T extends { id: number }> {
+export class TableComponent<T extends { id: number; fullName: string }> {
   @Input() columns: Cell[] = [];
   @Input() data: T[] = [];
 
@@ -35,5 +38,13 @@ export class TableComponent<T extends { id: number }> {
 
   onClickRow(id: number) {
     this.clickRow.emit(id);
+  }
+
+  getRandomColor(userName: string) {
+    return nameToColorHex(userName);
+  }
+
+  renderFirstLetter(userName: string) {
+    return getFirstLetter(userName);
   }
 }

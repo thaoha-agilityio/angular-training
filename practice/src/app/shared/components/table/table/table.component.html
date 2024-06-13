@@ -29,8 +29,20 @@
         class="border-b border-px cursor-pointer"
         (click)="onClickRow(row.id)">
         <ng-container *ngFor="let cell of columns; let cellIndex = index">
-          <td *ngIf="cell.key === 'avatar'; else noAvatarRow">
-            <app-avatar [url]="renderTableCell(cell, row)" />
+          <!-- Render avatar user -->
+          <td *ngIf="cell.key === 'avatar'; else noAvatarRow" class="px-4">
+            <app-avatar
+              *ngIf="renderTableCell(cell, row); else avatarDefault"
+              [url]="renderTableCell(cell, row)" />
+
+            <!-- Render avatar default -->
+            <ng-template #avatarDefault>
+              <div
+                class="text-white w-[41px] h-[41px] p-1 rounded-full text-lg text-center capitalize"
+                [style.background]="getRandomColor(row.fullName)">
+                {{ renderFirstLetter(row.fullName) }}
+              </div>
+            </ng-template>
           </td>
 
           <ng-template #noAvatarRow>
@@ -39,7 +51,7 @@
                 <div [innerHTML]="renderTableCell(cell, row)"></div>
               </ng-container>
               <ng-template #defaultCell>
-                <p>{{ renderTableCell(cell, row) }}</p>
+                <p>{{ renderTableCell(cell, row) || 'Unknown' }}</p>
               </ng-template>
             </td>
           </ng-template>

@@ -3,6 +3,7 @@ import { NgClass } from '@angular/common';
 
 export type ButtonVariant = 'primary' | 'second' | 'tertiary' | 'menu';
 export type ButtonSize = 'small' | 'medium' | 'lager' | 'auto';
+export type ButtonType = 'button' | 'submit' | 'reset';
 
 @Component({
   selector: 'app-button',
@@ -16,6 +17,7 @@ export class ButtonComponent {
   @Input() variant!: ButtonVariant;
   @Input() disabled = false;
   @Input() size: ButtonSize = 'auto';
+  @Input() type: ButtonType = 'button';
 
   @Output() clickButton = new EventEmitter<void>();
 
