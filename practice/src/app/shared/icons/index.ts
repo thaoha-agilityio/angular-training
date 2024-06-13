@@ -6,3 +6,4 @@ export * from './email-icon/email-icon.component';
 export * from './list-icon/list-icon.component';
 export * from './search-icon/search-icon.component';
 export * from './user-icon/user-icon.component';
+export * from './upload-icon/upload-icon.component';

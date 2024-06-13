@@ -23,5 +23,5 @@
     (showEditForm)="showEditForm()" />
 
   <!-- Edit user form -->
-  <app-user-edit *ngIf="!isShowEditForm" />
+  <app-user-edit *ngIf="isShowEditForm" (closeEditForm)="closeEditForm()" />
 </div>

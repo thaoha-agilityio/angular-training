@@ -46,12 +46,12 @@ export class UserComponent implements OnInit {
     {
       key: 'avatar',
       title: 'avatar',
-      widthPercent: 7,
+      widthPercent: 14,
     },
     {
       key: 'fullName',
       title: 'Full Name',
-      widthPercent: 33,
+      widthPercent: 31,
     },
     {
       key: 'status',
@@ -62,7 +62,7 @@ export class UserComponent implements OnInit {
     {
       key: 'email',
       title: 'Email',
-      widthPercent: 40,
+      widthPercent: 35,
     },
   ];
 
@@ -146,5 +146,10 @@ export class UserComponent implements OnInit {
   showEditForm() {
     this.isShowEditForm = true;
     this.closeDetailModal();
+  }
+
+  closeEditForm() {
+    this.isShowEditForm = false;
+    this.isOpenDetailModal = true;
   }
 }
