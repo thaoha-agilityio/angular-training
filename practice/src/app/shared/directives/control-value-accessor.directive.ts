@@ -13,8 +13,12 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   ],
 })
 export class ControlValueAccessorDirective implements ControlValueAccessor {
-  private onChange: (value: any) => void = () => {};
-  private onTouched: () => void = () => {};
+  private onChange: (value: any) => void = () => {
+    // do nothing
+  };
+  private onTouched: () => void = () => {
+    // do nothing
+  };
   private value: any;
 
   writeValue(value: any): void {
@@ -28,10 +32,6 @@ export class ControlValueAccessorDirective implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-
-  setDisabledState?(isDisabled: boolean): void {
-    // Handle disabled state if needed
   }
 
   @HostListener('input', ['$event.target.value'])

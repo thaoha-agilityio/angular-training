@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 // Environment
@@ -11,7 +11,7 @@ export class BaseService<T> {
   public path!: string;
   public http: HttpClient;
 
-  private dataChangedSubject = new Subject<void>();
+  private dataChangedSubject = new BehaviorSubject<any>(null);
   public dataChanged$ = this.dataChangedSubject.asObservable();
 
   constructor(http: HttpClient) {
@@ -37,8 +37,10 @@ export class BaseService<T> {
   }
 
   post<K>(item: T): Observable<K> {
-    return this.http
-      .post<K>(this.getFullUrl(this.path), item)
-      .pipe(tap(() => this.dataChangedSubject.next()));
+    return this.http.post<K>(this.getFullUrl(this.path), item).pipe(
+      tap((response: K) => {
+        this.dataChangedSubject.next(response);
+      })
+    );
   }
 }

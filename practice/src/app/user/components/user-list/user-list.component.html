@@ -12,12 +12,7 @@
       (searchRequest)="searchUser($event)" />
 
     <!-- User table -->
-    <app-table
-      [data]="users"
-      [columns]="columns"
-      (clickRow)="showUserDetail($event)"
-      [bgColor]="bgColor"
-      [firstLetter]="firstLetter" />
+    <app-table [data]="users" [columns]="columns" (clickRow)="showUserDetail($event)" />
   </div>
 
   <!-- User detail -->

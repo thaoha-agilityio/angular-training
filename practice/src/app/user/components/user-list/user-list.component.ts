@@ -1,5 +1,5 @@
 import { Subject, debounceTime, switchMap } from 'rxjs';
-import { ChangeDetectionStrategy, Component, OnChanges, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,7 +16,7 @@ import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 // Services
 import { UserService } from '../../services/user.service';
-import { getFirstLetter, nameToColorHex } from '@/app/core/utils';
+
 @Component({
   selector: 'app-user-list',
   standalone: true,
@@ -31,10 +31,10 @@ import { getFirstLetter, nameToColorHex } from '@/app/core/utils';
     HttpClientModule,
     UserDetailComponent,
   ],
-  providers: [UserService],
+  providers: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserComponent implements OnInit, OnChanges {
+export class UserComponent implements OnInit {
   isModalOpen = false;
   isOpenDetailModal = false;
   bgColor = '';
@@ -68,13 +68,19 @@ export class UserComponent implements OnInit, OnChanges {
 
   private searchTerms = new Subject<string>();
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.setUsers();
 
-    this.userService.dataChanged$.subscribe(() => {
-      this.setUsers();
+    this.userService.dataChanged$.subscribe((item: User) => {
+      if (!item) return;
+
+      this.users = [...this.users.concat(item)];
+      this.cdr.detectChanges();
     });
 
     this.searchTerms
@@ -84,12 +90,8 @@ export class UserComponent implements OnInit, OnChanges {
       )
       .subscribe((data: User[]) => {
         this.users = data;
+        this.cdr.detectChanges();
       });
-  }
-
-  ngOnChanges(): void {
-    this.bgColor = nameToColorHex(this.user.fullName);
-    this.firstLetter = getFirstLetter(this.user.fullName);
   }
 
   //  Call service to get product list from server then set response data to products if success
@@ -130,8 +132,10 @@ export class UserComponent implements OnInit, OnChanges {
   // Handle show user detail
   showUserDetail(id: number) {
     this.isOpenDetailModal = true;
+
     this.userService.getItem(id.toString()).subscribe((data: User) => {
       this.user = data;
+      this.cdr.detectChanges();
     });
   }
 }

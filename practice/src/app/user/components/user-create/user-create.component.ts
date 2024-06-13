@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 // Component
@@ -25,7 +25,7 @@ import { REGEX } from '@/app/core/constants';
   imports: [BaseModalComponent, InputComponent, ButtonComponent, ReactiveFormsModule],
   templateUrl: './user-create.component.html',
 })
-export class UserCreateComponent {
+export class UserCreateComponent implements OnInit {
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
   onClose() {
