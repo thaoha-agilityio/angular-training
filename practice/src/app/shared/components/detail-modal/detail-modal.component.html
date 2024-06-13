@@ -7,7 +7,7 @@
     <p *ngIf="status" class="status status--{{ status === activeStatus ? 'active' : 'inactive' }}">
       {{ status === activeStatus ? 'Active' : 'Not active' }}
     </p>
-    <button>
+    <button (click)="onShowEditForm()">
       <app-edit-icon />
     </button>
   </div>

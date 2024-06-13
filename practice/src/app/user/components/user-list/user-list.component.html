@@ -19,5 +19,9 @@
   <app-user-detail
     *ngIf="isOpenDetailModal"
     (closeDetailModal)="closeDetailModal()"
-    [userDetail]="user" />
+    [userDetail]="user"
+    (showEditForm)="showEditForm()" />
+
+  <!-- Edit user form -->
+  <app-user-edit *ngIf="isShowEditForm" (closeEditForm)="closeEditForm()" />
 </div>

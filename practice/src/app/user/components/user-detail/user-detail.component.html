@@ -2,7 +2,8 @@
 <app-detail-modal
   title="User information"
   (closeModal)="handleClose()"
-  [status]="userDetail.status">
+  [status]="userDetail.status"
+  (showEditForm)="onshowEditForm()">
   <div class="flex justify-center">
     <app-avatar
       *ngIf="userDetail.avatar; else avatarDefault"

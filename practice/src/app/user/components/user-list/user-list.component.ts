@@ -13,6 +13,7 @@ import { Cell, User } from '@/app/core/types';
 import { AvatarComponent, SearchInputComponent, TableComponent } from '@/app/shared/components';
 import { SearchIconComponent } from '@/app/shared/icons';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
+import { UserEditComponent } from '../user-edit/user-edit.component';
 
 // Services
 import { UserService } from '../../services/user.service';
@@ -30,6 +31,7 @@ import { UserService } from '../../services/user.service';
     NgIf,
     HttpClientModule,
     UserDetailComponent,
+    UserEditComponent,
   ],
   providers: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,18 +39,19 @@ import { UserService } from '../../services/user.service';
 export class UserComponent implements OnInit {
   isModalOpen = false;
   isOpenDetailModal = false;
+  isShowEditForm = false;
   bgColor = '';
   firstLetter = '';
   columns: Cell[] = [
     {
       key: 'avatar',
       title: 'avatar',
-      widthPercent: 7,
+      widthPercent: 14,
     },
     {
       key: 'fullName',
       title: 'Full Name',
-      widthPercent: 33,
+      widthPercent: 31,
     },
     {
       key: 'status',
@@ -59,7 +62,7 @@ export class UserComponent implements OnInit {
     {
       key: 'email',
       title: 'Email',
-      widthPercent: 40,
+      widthPercent: 35,
     },
   ];
 
@@ -137,5 +140,16 @@ export class UserComponent implements OnInit {
       this.user = data;
       this.cdr.detectChanges();
     });
+  }
+
+  // Show edit user form
+  showEditForm() {
+    this.isShowEditForm = true;
+    this.closeDetailModal();
+  }
+
+  closeEditForm() {
+    this.isShowEditForm = false;
+    this.isOpenDetailModal = true;
   }
 }

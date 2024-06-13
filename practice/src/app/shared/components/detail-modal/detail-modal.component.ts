@@ -21,8 +21,13 @@ export class DetailModalComponent {
   @Input() status?: USER_STATUS;
 
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
+  @Output() showEditForm: EventEmitter<void> = new EventEmitter<void>();
 
   handleClose() {
     this.closeModal.emit();
+  }
+
+  onShowEditForm() {
+    this.showEditForm.emit();
   }
 }

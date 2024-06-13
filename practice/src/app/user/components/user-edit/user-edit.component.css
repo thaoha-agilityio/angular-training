@@ -1,0 +1,19 @@
+.form--group {
+  @apply min-w-[400px] flex mt-5;
+}
+
+.label {
+  @apply text-base text-textDefault font-medium pr-5;
+}
+
+.detail {
+  @apply p-2.5 w-full h-36 text-base border border-borderInput bg-white rounded-xs text-textSecondary focus:border-mainColor focus:outline-none
+}
+
+.toggle {
+  @apply relative w-[50px] h-6 bg-bgInactiveStatus peer-focus:outline-none rounded-full peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-bgActiveStatus
+}
+
+.upload-img {
+  @apply text-mainColor items-center justify-center text-md font-medium flex gap-2 hover:bg-bgSecondary w-[179px] h-[32px] rounded-xs relative
+}

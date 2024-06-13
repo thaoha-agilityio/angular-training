@@ -1,0 +1,63 @@
+<div class="boder w-auto bg-bgPrimary min-h-[calc(100vh-73px)]">
+  <div class="border-b flex h-10">
+    <button class="p-3" (click)="onCloseEditForm()">
+      <app-arrow-right-icon />
+    </button>
+  </div>
+
+  <!-- Form -->
+  <div class="p-5">
+    <form>
+      <div class="flex justify-end pb-10 gap-4">
+        <app-button label="Delete" variant="secondary" size="medium" />
+        <app-button label="Save" variant="primary" type="submit" size="medium" />
+      </div>
+
+      <div
+        class="grid grid-cols-2 text-right gap-y-5"
+        style="align-items: baseline; grid-template-columns: 100px 286px">
+        <!-- Full name -->
+        <label class="label">Full Name</label>
+        <app-input />
+
+        <!-- Email -->
+        <label class="label">Email</label>
+        <app-input />
+
+        <!-- Avatar -->
+        <label class="label">Avatar</label>
+        <div class="flex gap-5" style="align-items: end">
+          <div class="text-white w-[95px] h-[95px] text-[70px] text-center capitalize bg-mainColor">
+            T
+          </div>
+          <div>
+            <div class="upload-img">
+              <input
+                aria-label="upload-img"
+                type="file"
+                accept="image/*"
+                class="opacity-0 absolute cursor-pointer" />
+              <app-upload-icon />
+              Upload new photo
+            </div>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <label class="label">Status</label>
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" class="sr-only peer" aria-label="status" />
+          <div class="toggle"></div>
+        </label>
+
+        <!-- Registered -->
+        <label class="label">Registered</label>
+        <label class="text--secondary text-left">May 21, 2020 17:02:06</label>
+
+        <!-- Details -->
+        <label class="label">Details</label>
+        <textarea class="detail"></textarea>
+      </div>
+    </form>
+  </div>
+</div>
