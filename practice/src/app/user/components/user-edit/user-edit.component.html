@@ -17,15 +17,15 @@
         class="grid grid-cols-2 text-right gap-y-5"
         style="align-items: baseline; grid-template-columns: 100px 286px">
         <!-- Full name -->
-        <label class="label">Full Name</label>
-        <app-input />
+        <label class="label" for="full-name">Full Name</label>
+        <app-input id="full-name" />
 
         <!-- Email -->
-        <label class="label">Email</label>
-        <app-input />
+        <label class="label" for="email">Email</label>
+        <app-input id="email" />
 
         <!-- Avatar -->
-        <label class="label">Avatar</label>
+        <label class="label" for="avatar">Avatar</label>
         <div class="flex gap-5" style="align-items: end">
           <div class="text-white w-[95px] h-[95px] text-[70px] text-center capitalize bg-mainColor">
             T
@@ -33,6 +33,7 @@
           <div>
             <div class="upload-img">
               <input
+                id="avatar"
                 aria-label="upload-img"
                 type="file"
                 accept="image/*"
@@ -44,19 +45,24 @@
         </div>
 
         <!-- Status -->
-        <label class="label">Status</label>
+        <label class="label" for="status-user">Status</label>
         <label class="inline-flex items-center cursor-pointer">
-          <input type="checkbox" value="" class="sr-only peer" aria-label="status" />
+          <input
+            id="status-user"
+            type="checkbox"
+            value=""
+            class="sr-only peer"
+            aria-label="status" />
           <div class="toggle"></div>
         </label>
 
         <!-- Registered -->
-        <label class="label">Registered</label>
-        <label class="text--secondary text-left">May 21, 2020 17:02:06</label>
+        <p class="label">Registered</p>
+        <p class="text--secondary text-left">May 21, 2020 17:02:06</p>
 
         <!-- Details -->
-        <label class="label">Details</label>
-        <textarea class="detail"></textarea>
+        <label class="label" for="user-detail">Details</label>
+        <textarea id="user-detail" class="detail"></textarea>
       </div>
     </form>
   </div>
