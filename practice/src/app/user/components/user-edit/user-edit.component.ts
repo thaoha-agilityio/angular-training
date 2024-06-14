@@ -42,7 +42,8 @@ export class UserEditComponent {
 
   ngOnInit(): void {
     this.editUser = this.fb.group({
-      fullName: ['', [Validators.required]],
+      fullName: [this.user.fullName, [Validators.required]],
+      email: [this.user.email],
     });
   }
 }
