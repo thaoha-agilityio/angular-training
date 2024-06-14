@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 // Components
@@ -24,7 +24,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.css',
 })
-export class UserEditComponent {
+export class UserEditComponent implements OnInit {
   @Input() user!: User;
 
   @Output() closeEditForm: EventEmitter<void> = new EventEmitter<void>();
