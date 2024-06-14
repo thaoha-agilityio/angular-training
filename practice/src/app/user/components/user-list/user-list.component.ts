@@ -134,7 +134,11 @@ export class UserComponent implements OnInit {
 
   // Handle show user detail
   showUserDetail(id: number) {
-    this.isOpenDetailModal = true;
+    if (this.isShowEditForm) {
+      this.isOpenDetailModal = false;
+    } else {
+      this.isOpenDetailModal = true;
+    }
 
     this.userService.getItem(id.toString()).subscribe((data: User) => {
       this.user = data;

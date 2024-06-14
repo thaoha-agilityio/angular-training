@@ -18,8 +18,7 @@
         style="align-items: baseline; grid-template-columns: 100px 286px">
         <!-- Full name -->
         <label class="label" for="full-name">Full Name</label>
-        <!-- <app-input id="full-name" formControlName="fullName" /> -->
-        <input formControlName="fullName" />
+        <app-input id="full-name" formControlName="fullName" />
 
         <!-- Email -->
         <label class="label" for="email">Email</label>
@@ -59,7 +58,7 @@
 
         <!-- Registered -->
         <p class="label">Registered</p>
-        <p class="text--secondary text-left">May 21, 2020 17:02:06</p>
+        <p class="text--secondary text-left">{{ userDetail.createDate }}</p>
 
         <!-- Details -->
         <label class="label" for="user-detail">Details</label>

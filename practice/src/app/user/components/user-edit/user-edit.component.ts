@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 // Components
@@ -24,10 +24,12 @@ import { UserService } from '../../services/user.service';
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.css',
 })
-export class UserEditComponent implements OnInit {
+export class UserEditComponent implements OnInit, OnChanges {
   @Input() user!: User;
 
   @Output() closeEditForm: EventEmitter<void> = new EventEmitter<void>();
+
+  userDetail: User = {} as User;
 
   editUser!: FormGroup;
 
@@ -41,6 +43,15 @@ export class UserEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.editUser = this.fb.group({
+      fullName: [this.user.fullName, [Validators.required]],
+      email: [this.user.email],
+    });
+  }
+
+  ngOnChanges(): void {
+    this.userDetail = this.user;
+
     this.editUser = this.fb.group({
       fullName: [this.user.fullName, [Validators.required]],
       email: [this.user.email],
