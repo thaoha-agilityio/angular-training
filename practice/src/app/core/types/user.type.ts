@@ -6,5 +6,6 @@ export interface User {
   email?: string;
   avatar?: string;
   createDate: string;
+  details?: string;
   status: USER_STATUS;
 }

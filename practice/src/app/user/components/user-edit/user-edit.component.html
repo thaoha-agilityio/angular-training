@@ -27,9 +27,19 @@
         <!-- Avatar -->
         <label class="label" for="avatar">Avatar</label>
         <div class="flex gap-5" style="align-items: end">
-          <div class="text-white w-[95px] h-[95px] text-[70px] text-center capitalize bg-mainColor">
-            T
-          </div>
+          <app-avatar *ngIf="base64Image" [url]="base64Image" variant="tertiary" />
+          <app-avatar
+            *ngIf="userDetail.avatar; else avatarDefault"
+            url="{{ userDetail.avatar }}"
+            variant="tertiary" />
+
+          <ng-template #avatarDefault>
+            <div
+              class="text-white w-[95px] h-[95px] text-[70px] text-center capitalize"
+              [style.background]="bgColor">
+              {{ firstLetter }}
+            </div>
+          </ng-template>
           <div>
             <div class="upload-img">
               <input
@@ -37,7 +47,8 @@
                 aria-label="upload-img"
                 type="file"
                 accept="image/*"
-                class="opacity-0 absolute cursor-pointer" />
+                class="opacity-0 absolute cursor-pointer"
+                (change)="onFileSelected($event)" />
               <app-upload-icon />
               Upload new photo
             </div>
@@ -46,23 +57,27 @@
 
         <!-- Status -->
         <label class="label" for="status-user">Status</label>
-        <label class="inline-flex items-center cursor-pointer">
+        <label class="inline-flex items-center cursor-pointer gap-4">
           <input
             id="status-user"
             type="checkbox"
             value=""
             class="sr-only peer"
-            aria-label="status" />
+            aria-label="status"
+            formControlName="status" />
           <div class="toggle"></div>
+          <p class="status {{ isActiveStatus ? 'status--active' : 'status--inactive' }}">
+            {{ isActiveStatus ? 'Active' : 'Inactive' }}
+          </p>
         </label>
 
         <!-- Registered -->
         <p class="label">Registered</p>
-        <p class="text--secondary text-left">{{ userDetail.createDate }}</p>
+        <p class="text--secondary text-left">{{ userDetail.createDate || 'Unknown' }}</p>
 
         <!-- Details -->
         <label class="label" for="user-detail">Details</label>
-        <textarea id="user-detail" class="detail"></textarea>
+        <textarea id="user-detail" class="detail" formControlName="details"></textarea>
       </div>
     </form>
   </div>
