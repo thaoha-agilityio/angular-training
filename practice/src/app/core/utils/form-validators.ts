@@ -1,10 +1,7 @@
 import { FormGroup } from '@angular/forms';
 
-// export interface ValidationMessages {
-//   [key: string]: { [key: string]: string };
-// }
-
 export type ObjectWithTypeCheck = Record<string, any>;
+
 // Function to get a specific validation message for a given control and error
 export const getValidationMessage = (
   validationMessages: ObjectWithTypeCheck,
