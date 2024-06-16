@@ -52,8 +52,8 @@ export class BaseService<T> {
    * Call API with PUT method
    * @param url
    */
-  put(item: T): Observable<T> {
-    return this.http.put<T>(this.getFullUrl(this.path), item).pipe(
+  put(url: string, item: T): Observable<T> {
+    return this.http.put<T>(this.getFullUrl(url), item).pipe(
       tap((response: T) => {
         this.dataChangedSubject.next(response);
       })

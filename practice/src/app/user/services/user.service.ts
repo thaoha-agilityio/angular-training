@@ -27,4 +27,10 @@ export class UserService extends BaseService<User> {
 
     return this.getWithParams(params);
   }
+
+  editUser(id: number, item: User): Observable<User> {
+    const url = `${this.path}/${id}`;
+
+    return this.put(url, item);
+  }
 }

@@ -82,7 +82,17 @@ export class UserComponent implements OnInit {
     this.userService.dataChanged$.subscribe((item: User) => {
       if (!item) return;
 
-      this.users = [...this.users.concat(item)];
+      // Update user in the list if exists, otherwise add it
+      const index = this.users.findIndex(user => user.id === item.id);
+
+      if (index > -1) {
+        this.users[index] = item;
+      } else {
+        this.users = [...this.users, item];
+      }
+
+      this.user = { ...item };
+
       this.cdr.detectChanges();
     });
 
