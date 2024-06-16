@@ -5,3 +5,7 @@
 .avatar--secondary {
   @apply w-[180px] h-[180px];
 }
+
+.avatar--tertiary {
+  @apply w-[95px] h-[95px];
+}

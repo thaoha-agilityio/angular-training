@@ -59,7 +59,5 @@ export class UserCreateComponent implements OnInit {
     this.userService.post(value).subscribe(() => {
       this.onClose();
     });
-
-    this.userService.getList();
   }
 }

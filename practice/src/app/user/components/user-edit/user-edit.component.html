@@ -1,16 +1,36 @@
-<div class="boder w-auto bg-bgPrimary min-h-[calc(100vh-73px)]">
-  <div class="border-b flex h-10">
+<div class="boder w-auto bg-bgPrimary min-h-[calc(100vh-74px)]">
+  <div class="border-b flex h-10 justify-between" style="align-items: center">
     <button class="p-3" (click)="onCloseEditForm()">
       <app-arrow-right-icon />
     </button>
+
+    <div class="flex items-center p-4 text-gray-500" *ngIf="successMessage">
+      <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500">
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20">
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+        </svg>
+      </div>
+      <div class="text-base text-textSecondary">{{ successMessage }}</div>
+    </div>
   </div>
 
   <!-- Form -->
   <div class="p-5">
-    <form>
+    <form [formGroup]="editUser" (ngSubmit)="onSubmit()">
       <div class="flex justify-end pb-10 gap-4">
         <app-button label="Delete" variant="secondary" size="medium" />
-        <app-button label="Save" variant="primary" type="submit" size="medium" />
+        <app-button
+          label="Save"
+          variant="primary"
+          type="submit"
+          size="medium"
+          [disabled]="!editUser.dirty" />
       </div>
 
       <div
@@ -18,51 +38,77 @@
         style="align-items: baseline; grid-template-columns: 100px 286px">
         <!-- Full name -->
         <label class="label" for="full-name">Full Name</label>
-        <app-input id="full-name" />
+        <app-input
+          id="full-name"
+          formControlName="fullName"
+          [errorMessage]="validationMessages['fullName']" />
 
         <!-- Email -->
         <label class="label" for="email">Email</label>
-        <app-input id="email" />
+        <app-input
+          id="email"
+          formControlName="email"
+          [errorMessage]="validationMessages['email']" />
 
         <!-- Avatar -->
         <label class="label" for="avatar">Avatar</label>
         <div class="flex gap-5" style="align-items: end">
-          <div class="text-white w-[95px] h-[95px] text-[70px] text-center capitalize bg-mainColor">
-            T
+          <!-- avatar upload -->
+          <app-avatar *ngIf="base64Image" [url]="base64Image" variant="tertiary" />
+
+          <!-- avatar user -->
+          <app-avatar
+            *ngIf="userDetail.avatar && !base64Image"
+            url="{{ userDetail.avatar }}"
+            variant="tertiary" />
+
+          <!-- avatar default -->
+          <div
+            *ngIf="!userDetail.avatar && !base64Image"
+            class="text-white w-[95px] h-[95px] text-[70px] text-center capitalize"
+            [style.background]="bgColor">
+            {{ firstLetter }}
           </div>
-          <div>
-            <div class="upload-img">
-              <input
-                id="avatar"
-                aria-label="upload-img"
-                type="file"
-                accept="image/*"
-                class="opacity-0 absolute cursor-pointer" />
-              <app-upload-icon />
-              Upload new photo
-            </div>
+
+          <!-- Upload image -->
+          <div class="upload-img">
+            <input
+              aria-label="upload-img"
+              type="file"
+              accept="image/*"
+              value=""
+              class="opacity-0 absolute cursor-pointer"
+              (change)="onFileSelected($event)"
+              formControlName="avatar" />
+            <app-upload-icon />
+            Upload new photo
           </div>
         </div>
 
         <!-- Status -->
         <label class="label" for="status-user">Status</label>
-        <label class="inline-flex items-center cursor-pointer">
+        <label class="inline-flex items-center cursor-pointer gap-4">
           <input
             id="status-user"
             type="checkbox"
             value=""
             class="sr-only peer"
-            aria-label="status" />
+            aria-label="status"
+            formControlName="status"
+            (change)="toggleStatus($event)" />
           <div class="toggle"></div>
+          <p class="status {{ isActiveStatus ? 'status--active' : 'status--inactive' }}">
+            {{ isActiveStatus ? 'Active' : 'Inactive' }}
+          </p>
         </label>
 
         <!-- Registered -->
         <p class="label">Registered</p>
-        <p class="text--secondary text-left">May 21, 2020 17:02:06</p>
+        <p class="text--secondary text-left">{{ userDetail.createDate || 'Unknown' }}</p>
 
         <!-- Details -->
         <label class="label" for="user-detail">Details</label>
-        <textarea id="user-detail" class="detail"></textarea>
+        <textarea id="user-detail" class="detail" formControlName="details"></textarea>
       </div>
     </form>
   </div>

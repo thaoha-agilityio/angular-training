@@ -19,7 +19,7 @@ export class ControlValueAccessorDirective implements ControlValueAccessor {
   private onTouched: () => void = () => {
     // do nothing
   };
-  private value: any;
+  value: any;
 
   writeValue(value: any): void {
     this.value = value;

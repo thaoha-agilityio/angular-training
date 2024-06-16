@@ -5,9 +5,10 @@
     aria-label="input"
     [name]="name"
     [(ngModel)]="value"
-    (input)="onChange($event)"
-    [attr.placeholder]="placeholder" />
+    (input)="onInput($event)"
+    [attr.placeholder]="placeholder"
+    appControlValueAccessor />
   <ng-container *ngIf="errorMessage">
-    <div class="text-sm text-textError">{{ errorMessage }}</div>
+    <div class="text-sm text-textError text-left">{{ errorMessage }}</div>
   </ng-container>
 </div>

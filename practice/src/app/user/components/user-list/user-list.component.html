@@ -1,20 +1,21 @@
-<div class="flex justify-between gap-4 min-h-[calc(100vh-73px)]">
-  <div class="w-full bg-bgPrimary">
-    <div class="users" *ngIf="!isModalOpen">
-      <p class="text-md font-semibold text-textSecondary">Users</p>
-      <button (click)="openModal()">
-        <app-search-icon />
-      </button>
+<div class="flex justify-between gap-4 h-[calc(100vh-73px)]">
+  <div class="overflow-y-auto w-full">
+    <div class="bg-bgPrimary">
+      <div class="users" *ngIf="!isModalOpen">
+        <p class="text-md font-semibold text-textSecondary">Users</p>
+        <button (click)="openModal()">
+          <app-search-icon />
+        </button>
+      </div>
+      <app-search-input
+        *ngIf="isModalOpen"
+        (closeModal)="closeModal()"
+        (searchRequest)="searchUser($event)" />
+
+      <!-- User table -->
+      <app-table [data]="users" [columns]="columns" (clickRow)="showUserDetail($event)" />
     </div>
-    <app-search-input
-      *ngIf="isModalOpen"
-      (closeModal)="closeModal()"
-      (searchRequest)="searchUser($event)" />
-
-    <!-- User table -->
-    <app-table [data]="users" [columns]="columns" (clickRow)="showUserDetail($event)" />
   </div>
-
   <!-- User detail -->
   <app-user-detail
     *ngIf="isOpenDetailModal"
@@ -23,5 +24,5 @@
     (showEditForm)="showEditForm()" />
 
   <!-- Edit user form -->
-  <app-user-edit *ngIf="isShowEditForm" (closeEditForm)="closeEditForm()" />
+  <app-user-edit *ngIf="isShowEditForm" (closeEditForm)="closeEditForm()" [user]="user" />
 </div>

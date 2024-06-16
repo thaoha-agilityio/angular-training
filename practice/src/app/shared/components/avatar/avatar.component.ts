@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-export type AvatarVariant = 'primary' | 'secondary';
+export type AvatarVariant = 'primary' | 'secondary' | 'tertiary';
 
 @Component({
   selector: 'app-avatar',
