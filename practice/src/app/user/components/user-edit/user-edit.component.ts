@@ -15,6 +15,7 @@ import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 // Components
 import { AvatarComponent, ButtonComponent, InputComponent } from '@/app/shared/components';
 import { ArrowRightIconComponent, UploadIconComponent } from '@/app/shared/icons';
+import { UserDeleteComponent } from '../user-delete/user-delete.component';
 
 // Types
 import { User } from '@/app/core/types';
@@ -44,6 +45,7 @@ import { ERROR_MESSAGES, REGEX, USER_STATUS } from '@/app/core/constants';
     UploadIconComponent,
     ReactiveFormsModule,
     AvatarComponent,
+    UserDeleteComponent,
     NgIf,
     NgSwitch,
     NgSwitchCase,
@@ -56,6 +58,7 @@ export class UserEditComponent implements OnChanges {
   @Input() user!: User;
 
   @Output() closeEditForm: EventEmitter<void> = new EventEmitter<void>();
+  @Output() closeDetailModal: EventEmitter<void> = new EventEmitter<void>();
 
   userDetail: User = {} as User;
   editUser!: FormGroup;
@@ -64,6 +67,7 @@ export class UserEditComponent implements OnChanges {
   isActiveStatus!: boolean;
   base64Image!: string;
   successMessage?: string;
+  isShowDeleteModal!: boolean;
   validationMessages: ObjectWithTypeCheck = {};
 
   // Message
@@ -76,10 +80,6 @@ export class UserEditComponent implements OnChanges {
       pattern: ERROR_MESSAGES.EMAIL_INVALID,
     },
   };
-
-  onCloseEditForm() {
-    this.closeEditForm.emit();
-  }
 
   constructor(
     private fb: FormBuilder,
@@ -115,6 +115,42 @@ export class UserEditComponent implements OnChanges {
       // Update form with new user data
       this.initializeForm();
     }
+  }
+
+  // Close edit user form
+  onCloseEditForm() {
+    this.closeEditForm.emit();
+  }
+
+  // Show delete modal
+  showDelete() {
+    this.isShowDeleteModal = true;
+  }
+
+  // Close delete modal
+  closeDeleteModal() {
+    this.isShowDeleteModal = false;
+  }
+
+  // Edit user success
+  deleteUserSuccess() {
+    // Close all modal
+    this.closeDeleteModal();
+    this.onCloseEditForm();
+    this.closeDetailModal.emit();
+
+    this.cdr.detectChanges();
+  }
+
+  // Delete user
+  deleteUser() {
+    this.userService.delete(this.userDetail.id.toString()).subscribe({
+      next: () => this.deleteUserSuccess(),
+      error: (error: HttpErrorResponse) => {
+        // TODO: will handle error later
+        console.log('error', error.message);
+      },
+    });
   }
 
   // Toggle status
@@ -166,9 +202,10 @@ export class UserEditComponent implements OnChanges {
         status: this.isActiveStatus ? USER_STATUS.ACTIVE : USER_STATUS.INACTIVE,
       };
 
-      this.userService.editUser(this.userDetail.id, value).subscribe({
+      this.userService.put(this.userDetail.id.toString(), value).subscribe({
         next: () => this.editSuccess(),
         error: (error: HttpErrorResponse) => {
+          // TODO: will handle error later
           console.log('error', error.message);
         },
       });

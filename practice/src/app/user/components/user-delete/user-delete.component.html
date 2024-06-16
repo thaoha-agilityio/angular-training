@@ -1,0 +1,13 @@
+<app-base-modal title="Delete" (closeModal)="onCloseDeleteModal()">
+  <div>
+    <p class="text--secondary">Are you sure to delete this user?</p>
+    <div class="flex gap-2 mt-3">
+      <app-button
+        label="Cancel"
+        variant="secondary"
+        size="small"
+        (clickButton)="onCloseDeleteModal()" />
+      <app-button label="Delete" variant="primary" size="small" (clickButton)="onDeleteUser()" />
+    </div>
+  </div>
+</app-base-modal>

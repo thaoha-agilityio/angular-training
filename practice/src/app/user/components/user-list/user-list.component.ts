@@ -86,13 +86,18 @@ export class UserComponent implements OnInit {
       const index = this.users.findIndex(user => user.id === item.id);
 
       if (index > -1) {
+        // Update user in the list
         this.users[index] = item;
-      } else {
+      } else if (item.id) {
+        // Add new user to the list
         this.users = [...this.users, item];
+      } else {
+        // Delete user from the list
+        this.users = this.users.filter(u => u.id !== this.user.id);
       }
 
+      // Update this.user based on item existence
       this.user = { ...item };
-
       this.cdr.detectChanges();
     });
 

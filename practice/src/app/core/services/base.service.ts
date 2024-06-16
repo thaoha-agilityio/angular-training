@@ -52,8 +52,24 @@ export class BaseService<T> {
    * Call API with PUT method
    * @param url
    */
-  put(url: string, item: T): Observable<T> {
+  put(id: string, item: T): Observable<T> {
+    const url = `${this.path}/${id}`;
+
     return this.http.put<T>(this.getFullUrl(url), item).pipe(
+      tap((response: T) => {
+        this.dataChangedSubject.next(response);
+      })
+    );
+  }
+
+  /**
+   * Call API with DELETE method
+   * @param url
+   */
+  delete(id: string): Observable<T> {
+    const url = `${this.path}/${id}`;
+
+    return this.http.delete<T>(this.getFullUrl(url)).pipe(
       tap((response: T) => {
         this.dataChangedSubject.next(response);
       })
