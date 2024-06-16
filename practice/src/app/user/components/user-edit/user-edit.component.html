@@ -1,4 +1,4 @@
-<div class="boder w-auto bg-bgPrimary min-h-[calc(100vh-73px)]">
+<div class="boder w-auto bg-bgPrimary min-h-[calc(100vh-74px)]">
   <div class="border-b flex h-10 justify-between" style="align-items: center">
     <button class="p-3" (click)="onCloseEditForm()">
       <app-arrow-right-icon />
@@ -25,7 +25,12 @@
     <form [formGroup]="editUser" (ngSubmit)="onSubmit()">
       <div class="flex justify-end pb-10 gap-4">
         <app-button label="Delete" variant="secondary" size="medium" />
-        <app-button label="Save" variant="primary" type="submit" size="medium" />
+        <app-button
+          label="Save"
+          variant="primary"
+          type="submit"
+          size="medium"
+          [disabled]="!editUser.dirty" />
       </div>
 
       <div
@@ -73,7 +78,8 @@
               accept="image/*"
               value=""
               class="opacity-0 absolute cursor-pointer"
-              (change)="onFileSelected($event)" />
+              (change)="onFileSelected($event)"
+              formControlName="avatar" />
             <app-upload-icon />
             Upload new photo
           </div>

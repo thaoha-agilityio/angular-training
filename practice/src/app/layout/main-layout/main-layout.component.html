@@ -1,16 +1,12 @@
-<!-- Site header -->
 <app-header></app-header>
+<main class="flex h-[calc(100vh-56px)]">
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
 
-<main>
-  <div class="flex">
-    <!-- Sidebar -->
-    <app-sidebar></app-sidebar>
-
-    <div class="flex-grow p-2 overflow-y-auto bg-bgSecondary">
-      <!-- Main content -->
-      <div class="content">
-        <router-outlet></router-outlet>
-      </div>
+  <div class="flex-grow p-2 bg-bgSecondary flex flex-col">
+    <!-- Main content -->
+    <div class="flex-grow">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </main>

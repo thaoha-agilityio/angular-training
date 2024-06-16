@@ -5,10 +5,10 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 
@@ -28,7 +28,7 @@ import {
   getFirstLetter,
   nameToColorHex,
   processMessages,
-  ValidationMessages,
+  ObjectWithTypeCheck,
 } from '@/app/core/utils';
 
 // Constants
@@ -52,7 +52,7 @@ import { ERROR_MESSAGES, REGEX, USER_STATUS } from '@/app/core/constants';
   styleUrl: './user-edit.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserEditComponent implements OnInit, OnChanges {
+export class UserEditComponent implements OnChanges {
   @Input() user!: User;
 
   @Output() closeEditForm: EventEmitter<void> = new EventEmitter<void>();
@@ -61,22 +61,21 @@ export class UserEditComponent implements OnInit, OnChanges {
   editUser!: FormGroup;
   bgColor!: string;
   firstLetter!: string;
-  isActiveStatus: boolean = false;
-  base64Image: string = '';
-
-  validationMessages: { [key: string]: string } = {};
+  isActiveStatus!: boolean;
+  base64Image!: string;
+  successMessage?: string;
+  validationMessages: ObjectWithTypeCheck = {};
 
   // Message
-  VALIDATION_MESSAGES: ValidationMessages = {
+  VALIDATION_MESSAGES: ObjectWithTypeCheck = {
     fullName: {
-      required: ERROR_MESSAGES.FIELD_REQUIRED('Email'),
+      required: ERROR_MESSAGES.FIELD_REQUIRED('Full name'),
       pattern: ERROR_MESSAGES.ONLY_BLANK_SPACES,
     },
     email: {
       pattern: ERROR_MESSAGES.EMAIL_INVALID,
     },
   };
-  successMessage: any;
 
   onCloseEditForm() {
     this.closeEditForm.emit();
@@ -88,8 +87,6 @@ export class UserEditComponent implements OnInit, OnChanges {
     private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit(): void {}
-
   private initializeForm(): void {
     this.editUser = this.fb.group({
       fullName: [
@@ -99,6 +96,7 @@ export class UserEditComponent implements OnInit, OnChanges {
       email: [this.userDetail.email, [Validators.pattern(REGEX.CHECK_EMAIL)]],
       status: [this.isActiveStatus],
       details: [this.userDetail.details],
+      avatar: [''],
     });
   }
 
@@ -145,6 +143,20 @@ export class UserEditComponent implements OnInit, OnChanges {
     }
   }
 
+  editSuccess() {
+    this.successMessage = 'Done';
+
+    // Clear validation messages on success
+    this.validationMessages = {};
+    this.cdr.detectChanges();
+
+    setTimeout(() => {
+      this.successMessage = '';
+      // Trigger change detection to remove message from UI
+      this.cdr.detectChanges();
+    }, 3000);
+  }
+
   // Handle submit form
   onSubmit(): void {
     if (this.editUser.valid) {
@@ -154,14 +166,11 @@ export class UserEditComponent implements OnInit, OnChanges {
         status: this.isActiveStatus ? USER_STATUS.ACTIVE : USER_STATUS.INACTIVE,
       };
 
-      this.userService.editUser(this.userDetail.id, value).subscribe(() => {
-        this.successMessage = 'Done';
-        this.cdr.detectChanges();
-
-        setTimeout(() => {
-          this.successMessage = null;
-          this.cdr.detectChanges(); // Trigger change detection to remove message from UI
-        }, 3000);
+      this.userService.editUser(this.userDetail.id, value).subscribe({
+        next: () => this.editSuccess(),
+        error: (error: HttpErrorResponse) => {
+          console.log('error', error.message);
+        },
       });
     } else {
       this.validationMessages = processMessages(this.editUser, this.VALIDATION_MESSAGES);

@@ -11,7 +11,11 @@ export const convertBase64 = (file: File): Promise<string | null> =>
     fileReader.onload = () => {
       const result = fileReader.result;
 
-      typeof result === 'string' ? resolve(result) : reject(new Error('Unsupported result type'));
+      if (typeof result === 'string') {
+        resolve(result);
+      } else {
+        reject(new Error('Unsupported result type'));
+      }
     };
 
     fileReader.onerror = error => reject(error);

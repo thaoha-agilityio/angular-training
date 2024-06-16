@@ -1,24 +1,25 @@
 import { FormGroup } from '@angular/forms';
 
-export interface ValidationMessages {
-  [key: string]: { [key: string]: string };
-}
+// export interface ValidationMessages {
+//   [key: string]: { [key: string]: string };
+// }
 
+export type ObjectWithTypeCheck = Record<string, any>;
 // Function to get a specific validation message for a given control and error
 export const getValidationMessage = (
-  validationMessages: ValidationMessages,
+  validationMessages: ObjectWithTypeCheck,
   controlKey: string,
   errorKey: string
 ): string => {
-  return (validationMessages[controlKey] as { [key: string]: string })[errorKey] || '';
+  return validationMessages[controlKey][errorKey] || '';
 };
 
 // Function to process the form controls and generate validation messages
 export const processMessages = (
   form: FormGroup,
-  validationMessages: ValidationMessages
-): { [key: string]: string } => {
-  const messages: { [key: string]: string } = {};
+  validationMessages: ObjectWithTypeCheck
+): ObjectWithTypeCheck => {
+  const messages: ObjectWithTypeCheck = {};
 
   // Iterate over each control in the form group
   Object.keys(form.controls).forEach(controlKey => {
